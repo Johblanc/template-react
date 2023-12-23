@@ -1,10 +1,13 @@
 import { RouterProvider } from "react-router-dom";
 import { ROUTER } from "./Router";
+import { AllContexts } from "../Context/AllContexts";
 
 function App() {
   return (
     <div className="App">
-      <RouterProvider router={ROUTER} />
+      <AllContexts>
+        <RouterProvider router={ROUTER} />
+      </AllContexts>
     </div>
   );
 }
