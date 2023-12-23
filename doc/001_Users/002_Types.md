@@ -89,20 +89,6 @@ export type TPages = {
 };
 ```
 
-## FetchMethods
-
-new ```src\Types\FetchMethod.enum.ts```
-
-```ts
-export enum FetchMethods {
-  CREATE = "CREATE",
-  GET_ONE = "GET_ONE",
-  GET_ALL = "GET_ALL",
-  UPDATE = "UPDATE",
-  DELETE = "DELETE",
-}
-```
-
 ## TResponse
 
 new ```src\Types\Response.type.ts```
