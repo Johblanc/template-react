@@ -30,7 +30,7 @@ async update(
 
 ## UserUpdatePage
 
-new ```src/Users/Profile/UserUpdate.tsx```
+new ```src/Users/UserUpdate.tsx```
 
 ```ts
 import { useContext, useState } from "react";
@@ -191,7 +191,7 @@ export function UserUpdatePage() {
 
 ## ProfilePage
 
-update ```src/Users/Profile/Profile.tsx``` :
+update ```src/Users/Profile.tsx``` :
 
 ```ts
 /* ... */

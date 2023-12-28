@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { Disconnect } from "./Disconnect";
-import { UserContext } from "../../Context/UserContext";
-import { ContactCard } from "../Contacts/ContactCard";
+import { Disconnect } from "./Connection/Disconnect";
+import { UserContext } from "../Context/UserContext";
+import { ContactCard } from "./Contacts/ContactCard";
 import { Link } from "react-router-dom";
 
 export function ProfilePage() {

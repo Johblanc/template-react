@@ -42,7 +42,7 @@ export class RequesterUser extends RequesterBase {
 
 ## Register
 
-new ```src/Users/Profile/Register.tsx```
+new ```src/Users/Connection/Register.tsx```
 
 ```ts
 import { useContext, useState } from "react";

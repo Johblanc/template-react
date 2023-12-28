@@ -1,12 +1,12 @@
 import { useContext, useState } from "react";
-import { UserContext } from "../../Context/UserContext";
-import { StringEntry } from "../../Forms/String/StringEntry";
-import { Validator } from "../../Utilities/Validators/Validators";
-import { EValidatorState } from "../../Utilities/Validators/ValidatorState.enum";
-import { Requester } from "../../Utilities/Requests/Requester";
-import { TokenContext } from "../../Context/TokenContext";
+import { UserContext } from "../Context/UserContext";
+import { StringEntry } from "../Forms/String/StringEntry";
+import { Validator } from "../Utilities/Validators/Validators";
+import { EValidatorState } from "../Utilities/Validators/ValidatorState.enum";
+import { Requester } from "../Utilities/Requests/Requester";
+import { TokenContext } from "../Context/TokenContext";
 import { useNavigate } from "react-router-dom";
-import { SelectFiles } from "../../Forms/Files/SelectFiles";
+import { SelectFiles } from "../Forms/Files/SelectFiles";
 
 type TBodyUserUpdate = {
   pseudo?: string;

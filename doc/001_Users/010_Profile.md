@@ -63,7 +63,7 @@ export function ContactCard({ user }: IContactCardProps) {
 
 ## ProfilePage
 
-new ```src/Users/Profile/Profile.tsx```
+new ```src/Users/Profile.tsx```
 
 ```ts
 import { useContext } from "react";

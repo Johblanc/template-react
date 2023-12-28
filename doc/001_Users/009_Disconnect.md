@@ -1,6 +1,6 @@
 # Disconnect
 
-new ```src/Users/Profile/Disconnect.tsx```
+new ```src/Users/Connection/Disconnect.tsx```
 
 ```ts
 import { useContext } from "react";
