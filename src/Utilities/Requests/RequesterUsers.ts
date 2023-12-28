@@ -35,4 +35,26 @@ export class RequesterUser extends RequesterBase {
     );
     return response;
   }
+
+  async update(
+    token : string,
+    body: {
+      pseudo?: string;
+      password?: string;
+      first_name?: string;
+      last_name?: string;
+      mail?: string;
+    },
+    files? : FileList,
+  ): Promise<TResponse<TUser>> {
+    const response = await RequesterUser.base<TUser>(
+      `${this.route}`,
+      RequestMethods.PATCH,
+      [],
+      body,
+      token,
+      files ? { key: "image" , value : files } : undefined
+    );
+    return response;
+  }
 }

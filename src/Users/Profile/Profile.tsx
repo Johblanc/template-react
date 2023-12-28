@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Disconnect } from "./Disconnect";
 import { UserContext } from "../../Context/UserContext";
 import { ContactCard } from "../Contacts/ContactCard";
+import { Link } from "react-router-dom";
 
 export function ProfilePage() {
   const { user } = useContext(UserContext);
@@ -52,6 +53,7 @@ export function ProfilePage() {
           ))}
         </>
       )}
+      <Link to={"/users/update"}> Modification Profile</Link>
 
       <Disconnect />
     </div>
