@@ -1,5 +1,31 @@
 # Entrée Texte
 
+## Style temporaire
+
+new ```src/Forms/form.style.css```
+
+```css
+.togglable svg{
+  width: 1em;
+}
+
+.togglable svg .fill-3{
+    fill: #CCCCCC;
+}
+
+.togglable svg .fill-8{
+  fill: #000000;
+}
+
+.togglable input[type="checkbox" i]{
+  display: none;
+}
+
+.no-size {
+  display: none;
+}
+```
+
 ## CheckableIcon
 
 new ```src/Forms/Checkable/CheckableIcon.tsx```
@@ -42,6 +68,7 @@ export function CheckableIcon({ value, setValue, info,className = "" }: ICheckab
         className="fill-8"
         style={{
           transform: `rotate(${value ? 0 : 900}deg)`,
+          transition: "all 0.5s",
         }}
       />
     </svg>
@@ -113,6 +140,7 @@ import { useEffect, useState } from "react";
 import { TValidatorCallback } from "../../Utilities/Validators/ValidatorCallback.type";
 import { TValidatorConfirmation } from "../../Utilities/Validators/ValidatorConfirmation.type";
 import { Checkable } from "../Checkable/Checkable";
+import "../form.style.css";
 
 interface IStringEntryProps {
   idName: string;
@@ -173,9 +201,9 @@ export function StringEntry({
       setInputValue(value);
     }
     if (setValid) {
-      setValid(newValid.valid);
+      setValid(newValid.valid || !checkValue);
     }
-  }, [value]);
+  }, [value,checkValue]);
 
   useEffect(() => {
     if (setValue) {

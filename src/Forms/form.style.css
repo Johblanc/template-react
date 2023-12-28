@@ -1,0 +1,20 @@
+
+.togglable svg{
+  width: 1em;
+}
+
+.togglable svg .fill-3{
+    fill: #CCCCCC;
+}
+
+.togglable svg .fill-8{
+  fill: #000000;
+}
+
+.togglable input[type="checkbox" i]{
+  display: none;
+}
+
+.no-size {
+  display: none;
+}

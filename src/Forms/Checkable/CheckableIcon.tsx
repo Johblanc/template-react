@@ -35,6 +35,7 @@ export function CheckableIcon({ value, setValue, info,className = "" }: ICheckab
         className="fill-8"
         style={{
           transform: `rotate(${value ? 0 : 900}deg)`,
+          transition: "all 0.5s",
         }}
       />
     </svg>

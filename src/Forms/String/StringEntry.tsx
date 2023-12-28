@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { TValidatorCallback } from "../../Utilities/Validators/ValidatorCallback.type";
 import { TValidatorConfirmation } from "../../Utilities/Validators/ValidatorConfirmation.type";
 import { Checkable } from "../Checkable/Checkable";
+import "../form.style.css";
 
 interface IStringEntryProps {
   idName: string;
@@ -62,9 +63,9 @@ export function StringEntry({
       setInputValue(value);
     }
     if (setValid) {
-      setValid(newValid.valid);
+      setValid(newValid.valid || !checkValue);
     }
-  }, [value]);
+  }, [value,checkValue]);
 
   useEffect(() => {
     if (setValue) {
