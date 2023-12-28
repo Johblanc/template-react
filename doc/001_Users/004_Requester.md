@@ -50,7 +50,10 @@ export class RequesterBase {
     params: (string | number)[] = [],
     body: any = undefined,
     token: string | undefined = undefined,
-    files: FileList | undefined = undefined,
+    files:  {
+      key :string;
+      value : FileList;
+    }  | undefined = undefined,
     querry: TQuerry | undefined = undefined
   ): Promise<TResponse<TData, TMessage>> {
     let querryStr = "";
@@ -77,10 +80,10 @@ export class RequesterBase {
           }
         }
       }
-      for (let i = 0; i < files.length; i += 1) {
-        const item = files.item(i);
+      for (let i = 0; i < files.value.length; i += 1) {
+        const item = files.value.item(i);
         if (item !== null) {
-          filesBody.append("files", item, item.name);
+          filesBody.append(files.key, item, item.name);
         }
       }
 
