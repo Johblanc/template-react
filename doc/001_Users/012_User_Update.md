@@ -92,22 +92,22 @@ export function UserUpdatePage() {
   };
 
   const handleUpdate = async () => {
-    const responce = await Requester.users.update(token,body,image)
-    if(responce.statusCode === 200){
-      if (responce.token){
-        setToken(responce.token)
+    const response = await Requester.users.update(token,body,image)
+    if(response.statusCode === 200){
+      if (response.token){
+        setToken(response.token)
       }
-      if (responce.data){
-        setUser(responce.data)
+      if (response.data){
+        setUser(response.data)
         navigate("/users/profile")
       }
     }
     else {
-      if(typeof responce.message === "string"){
-        setMessages([responce.message])
+      if(typeof response.message === "string"){
+        setMessages([response.message])
       }
       else {
-        setMessages(responce.message)
+        setMessages(response.message)
       }
     }
 
