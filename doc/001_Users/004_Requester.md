@@ -43,7 +43,7 @@ export class RequesterBase {
   static async base<
     TData = any,
     TMessage = string | string[],
-    TQuerry extends Object = Object
+    TQuery extends Object = Object
   >(
     url: string,
     method: RequestMethods = RequestMethods.GET,
@@ -54,12 +54,12 @@ export class RequesterBase {
       key :string;
       value : FileList;
     }  | undefined = undefined,
-    querry: TQuerry | undefined = undefined
+    query: TQuery | undefined = undefined
   ): Promise<TResponse<TData, TMessage>> {
-    let querryStr = "";
-    if (querry !== undefined) {
-      querryStr = `?${Object.keys(querry)
-        .map((key) => `${key}=${querry[key as keyof typeof querry]}`)
+    let queryStr = "";
+    if (query !== undefined) {
+      queryStr = `?${Object.keys(query)
+        .map((key) => `${key}=${query[key as keyof typeof query]}`)
         .join("&")}`;
     }
 
@@ -90,7 +90,7 @@ export class RequesterBase {
       const data = await fetch(
         `${process.env.REACT_APP_API_URL}/${url}${params.map(
           (item) => "/" + String(item)
-        )}${querryStr}`,
+        )}${queryStr}`,
         {
           method: method,
           headers: {
@@ -107,7 +107,7 @@ export class RequesterBase {
       const data = await fetch(
         `${process.env.REACT_APP_API_URL}/${url}${params.map(
           (item) => "/" + String(item)
-        )}${querryStr}`,
+        )}${queryStr}`,
         {
           method: method,
           headers: {
