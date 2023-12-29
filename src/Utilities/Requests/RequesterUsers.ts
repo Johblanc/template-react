@@ -57,4 +57,30 @@ export class RequesterUser extends RequesterBase {
     );
     return response;
   }
+
+  async getAll(
+    token : string,
+    query : {
+      itemsByPage? : number,
+      page? : number,
+      pseudo? : string,
+      first_name? : string,
+      last_name? : string,
+      actif_from? : number,
+      sort_keys? : string,
+      sort_orders? : string,
+    }
+    
+  ): Promise<TResponse<TUser[]>> {
+    const response = await RequesterUser.base<TUser[]>(
+      `${this.route}`,
+      RequestMethods.GET,
+      [],
+      undefined,
+      token,
+      undefined,
+      query
+    );
+    return response;
+  }
 }
