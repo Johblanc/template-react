@@ -1,7 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
-import { LoginRegisterPage } from "../Users/LoginRegister/LoginRegister.page";
+import { ProfilePage } from "../Users/Profile";
 import { ErrorPage } from "./ErrorPage";
 import { Root } from "./Root";
+import { AccueilPage } from "./Accueil";
+import { UserUpdatePage } from "../Users/UserUpdate";
+import { UserGetAll } from "../Users/UserGetAll";
 
 export const ROUTER = createBrowserRouter([
   {
@@ -11,7 +14,24 @@ export const ROUTER = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <LoginRegisterPage />,
+        element: <AccueilPage />,
+      },
+      {
+        path: "users",
+        children: [
+          {
+            path: "",
+            element: <UserGetAll />,
+          },
+          {
+            path: "profile",
+            element: <ProfilePage />,
+          },
+          {
+            path: "update",
+            element: <UserUpdatePage />,
+          },
+        ],
       },
     ],
   },
