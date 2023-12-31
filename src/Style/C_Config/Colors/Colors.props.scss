@@ -1,0 +1,48 @@
+@use "sass:map";
+@use "sass:list";
+@use "sass:color";
+
+
+@mixin get-colors-css-variables ($color-pantone : $color-pantone-default,
+  $dark-theme: $dark-theme-default,
+  $inter-color-number: $inter-color-number-default) {
+
+  /*! Déclaration des variables css des couleurs de chaque Theme. */
+  @each $color-format, $colors-values in $color-pantone {
+    $format-name : -#{$color-format};
+
+    @if $color-format =="" {
+      /*!    -> Theme de couleurs par défaut */
+      $format-name : "";
+    }
+
+    @else {
+      /*!    -> Theme de couleurs "#{$color-format}" */
+    }
+
+    $light : map.get($colors-values, "light");
+    $medium : map.get($colors-values, "medium");
+    $dark : map.get($colors-values, "dark");
+
+    #{"--var-color"}#{$format-name}#{"-0"}: if($dark-theme, $light, $dark);
+
+    $delta : calc(100 / ($inter-color-number + 1));
+
+    @each $_, $i in number-sequence(1, $inter-color-number) {
+      #{"--var-color"}#{$format-name}#{"-"}#{$i}: color.mix(if($dark-theme, $light, $dark), $medium, (100 - $delta * $i) * 1%);
+    }
+
+    #{"--var-color"}#{$format-name}#{"-"}#{$inter-color-number + 1}: $medium;
+
+    @each $_, $i in number-sequence(1, $inter-color-number) {
+      #{"--var-color"}#{$format-name}#{"-"}#{$inter-color-number + 1 + $i}: color.mix(if($dark-theme, $dark, $light), $medium, $delta * $i * 1%);
+    }
+
+    #{"--var-color"}#{$format-name}#{"-"}#{($inter-color-number + 1) * 2}: if($dark-theme, $dark, $light);
+
+  };
+
+  /*!    -> Couleur transparente */
+  --var-color-no: #0000;
+  /*! */
+};

@@ -1,0 +1,8 @@
+
+
+@mixin get-sizes-by-format-css-variables($size-format,$size-rates,$sub-name : "") {
+  /*!    -> Tailles #{if($sub-name == "fs", "de font-size", if($sub-name == "col", "de boites", "de dimentionnement"))} "#{$size-format}" */
+  @each $size-key, $size-rate in $size-rates {
+    #{"--var-size-"}#{$size-format}#{name-class($sub-name)}#{"-"}#{$size-key}: calc(var(--var-ref-size-#{$size-format}) * #{$size-rate})
+  }
+};

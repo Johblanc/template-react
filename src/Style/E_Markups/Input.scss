@@ -1,0 +1,17 @@
+input {
+  @include get-padding("sm", "x");
+  @include get-background(7);
+  @include get-font-color(1);
+  @include get-radius("md");
+  @include get-borders("sm", 0, "br");
+  @include get-borders("sm", 2, "tl");
+
+  &:hover:not(:disabled):not(.disabled) {
+    @include get-background(8);
+  }
+
+  &:disabled,
+  &.disabled {
+    @include get-background(1);
+  }
+}

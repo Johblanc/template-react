@@ -1,0 +1,10 @@
+@use "sass:map";
+@use "sass:math";
+
+@function number-sequence ($min : 1 , $max : 10, $step : 1, $first-index : 1) {
+  $result : ();
+  @for $i from 0 through math.floor(math.div(($max - $min), $step)) {
+    $result : map.merge($result ,( calc($i + $first-index) : calc($min + $i * $step)) );
+  }
+  @return $result
+}

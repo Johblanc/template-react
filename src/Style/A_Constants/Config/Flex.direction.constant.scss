@@ -1,0 +1,11 @@
+
+// FLEX DIRECTIONS -----------------------------------------------------------------
+
+// Liste des Noms de classes pour les display flex flex-directions
+$flex-directions-ref : (
+  "" : none,
+  "col" : column,
+  "col-rev" : column-reverse,
+  "row" : row,
+  "row-rev" : row-reverse
+);

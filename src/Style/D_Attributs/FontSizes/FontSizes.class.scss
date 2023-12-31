@@ -1,0 +1,29 @@
+
+@mixin class-font-size(
+  $size-formats : $size-formats-default, 
+  $size-rates: $size-rates-default, 
+  $default-size : $font-size-default-size-key, 
+  $default-format : $font-size-default-size-format,
+  $all-formats : $font-size-class-all-formats,
+  $class-name : $font-size-class-name, 
+  $class-name-suffix : ""
+) {
+  /*! Font Sizes*/
+  .#{$class-name}{
+    @include get-font-size($default-size, $default-format);
+
+    @each $rate-key, $rate-value in $size-rates {
+      &#{name-class($rate-key)} {
+        @include get-font-size($rate-key, $default-format );
+        
+        @if $all-formats {
+          @each $format-key, $format-value in $size-formats {
+            &#{name-class($format-key)}#{name-class($class-name-suffix)}  {
+              @include get-font-size($rate-key, $format-key );
+            }
+          }
+        }
+      }
+    }
+  }
+}

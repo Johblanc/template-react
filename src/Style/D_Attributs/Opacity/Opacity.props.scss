@@ -1,0 +1,5 @@
+
+
+@mixin get-opacity ($opacity-key : $opacity-key-default){
+  opacity: var-opacity($opacity-key);
+}

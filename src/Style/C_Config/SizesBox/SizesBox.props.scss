@@ -1,0 +1,24 @@
+
+@use "sass:map";
+
+@mixin get-box-size-props (
+  $property, 
+  $box-key : $box-size-default-box-key,
+  $all-formats : $box-size-all-formats,
+  $default-format : $box-size-default-format,
+  $size-rates: $size-box-rates-default, 
+  $size-formats : $size-formats-default
+) {
+  $listing : box-sizes-map(
+    $all-formats,
+    $default-format,
+    $size-rates,
+    $size-formats
+    ) ;
+  @each $key, $value in $listing {
+    @if($key == $box-key ){
+      #{$property} : $value;
+    }
+  }
+}
+

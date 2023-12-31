@@ -1,0 +1,18 @@
+
+// FLEX ALIGN ----------------------------------------------------------------------
+
+// Liste des Noms de classes pour les display flex align-items
+$flex-align-items-ref : (
+  "": none,
+  "ybln" : baseline,
+  "yctr" : center,
+  "yend" : flex-end,
+  "yfbl" : first baseline,
+  "ylbl" : last baseline,
+  "ynrm" : normal,
+  "ysed" : self-end,
+  "ysst" : self-start,
+  "ysta" : flex-start,
+  "ystr" : stretch,
+
+);

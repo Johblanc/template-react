@@ -1,0 +1,5 @@
+@use "sass:map";
+
+@mixin get-flex-x-key ($flex-x-key) {
+  justify-content: map.get($flex-justify-content-ref, $flex-x-key);
+};

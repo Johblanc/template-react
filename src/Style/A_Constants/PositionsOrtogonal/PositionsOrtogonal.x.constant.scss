@@ -1,0 +1,23 @@
+
+// POSITIONS -----------------------------------------------------------------------
+
+// Références de position dans un rectangle
+// 
+//                 TOP (Y)
+//       TL  __________________  TR
+//          |  	               |
+//          |  	               |
+// LEFT (X) |  	               |  RIGHT (X)
+//          |  	               |
+//          |__________________|
+//       BL                      BR
+//               BOTTOM (Y)
+// 
+
+// Liste des Noms de classes pour les positions ortogonales pour l'axe des x
+$positions-orto-x : (
+  "" : [],
+  "r" : append([] , "right"),
+  "l" : append([] , "left"),
+  "x" : append(append([] , "right") , "left"),
+);

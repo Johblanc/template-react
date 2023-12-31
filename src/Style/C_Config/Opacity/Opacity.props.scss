@@ -1,0 +1,9 @@
+
+
+// Déclaration des variables css des opacités de référence
+@mixin get-opacity-css-variables ($opacities : $opacities-default) {
+  @each $opacity-key, $opacity-value in $opacities {
+    #{"--var-opacity"}#{name-class($opacity-key)} : $opacity-value;
+  }
+}
+

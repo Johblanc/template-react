@@ -1,33 +1,47 @@
 import { TUser } from "../../Types/User.type";
+import { ProfilIcon } from "./Profil.icon";
 
 interface IContactCardProps {
   user: TUser;
 }
 export function ContactCard({ user }: IContactCardProps) {
   return (
-    <div>
+    <div className="contact-card">
       {user.image ? (
         <img
           src={`${process.env.REACT_APP_API_URL}/${user.image.path}`}
           alt={user.image.alt}
-          style={{ width: "3em" }}
+          className="avatar-small"
         />
       ) : (
-        <img
-          src={`/images/profil.svg`}
-          alt={"Avatar par défaut"}
-          style={{ width: "3em" }}
-        />
+        <ProfilIcon className="avatar-small" pathClassName="f-5" />
       )}
-      <p>
-        <strong>{user.pseudo}</strong>
-      </p>
-      {user.actif_at && (
+      <div>
         <p>
-          <strong>Dernière Connection : </strong>
-          { new Date(user.actif_at).toLocaleString()}
+          <strong>{user.pseudo}</strong>
         </p>
-      )}
+        {user.actif_at && (
+          <p>
+            {Math.floor(
+              (new Date().valueOf() - new Date(user.actif_at).valueOf()) /
+                (1000 * 60 * 60)
+            ) === 0
+              ? "Il y a moins d'1 h"
+              : Math.floor(
+                  (new Date().valueOf() - new Date(user.actif_at).valueOf()) /
+                    (1000 * 60 * 60)
+                ) < 24
+              ? `Il y a ${Math.floor(
+                  (new Date().valueOf() - new Date(user.actif_at).valueOf()) /
+                    (1000 * 60 * 60)
+                )} h`
+              : `Il y a ${Math.floor(
+                  (new Date().valueOf() - new Date(user.actif_at).valueOf()) /
+                    (1000 * 60 * 60 * 24)
+                )} j`}
+          </p>
+        )}
+      </div>
     </div>
   );
 }

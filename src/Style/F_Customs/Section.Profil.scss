@@ -1,0 +1,36 @@
+.section-profil {
+  .profil-informations {
+
+    >span {
+      @include get-flex("", "", "", "wrap");
+
+      img,
+      svg {
+        @include get-padding("sm");
+        @include get-radius("sm");
+        @include get-borders("xs", 3, "br");
+      }
+
+      >div {
+        @include get-flex-grow(1);
+        @include get-padding("sm");
+        @include get-radius("sm");
+        @include get-borders("xs", 3, "bl");
+        
+        >* {
+          @include get-margin("xl","b" );
+        }
+      }
+    }
+  }
+
+  .contacts-list {
+    >div {
+      @include get-flex("xsev", "", "", "wrap");
+    }
+  }
+  
+  button {
+    @include get-margin("xl");
+  }
+}

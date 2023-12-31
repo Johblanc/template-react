@@ -1,0 +1,11 @@
+.App {
+  @include get-colors-css-variables();
+  @include get-sizes-css-variables();
+  @include get-background(2);
+  @include get-height("100h");
+  @include get-flex("","","col");
+  >*:last-child {
+    @include get-flex-grow(1);
+    overflow-y: auto;
+  }
+}

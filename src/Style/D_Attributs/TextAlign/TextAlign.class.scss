@@ -1,0 +1,12 @@
+
+@mixin class-text-align (
+  $text-alignements : $text-alignements-ref, 
+  $class-name : $text-align-class-name,
+  $class-name-suffix : ""
+){
+  @each $key, $value in $text-alignements {
+    .#{$class-name}-#{$key}#{name-class($class-name-suffix)} {
+      text-align: $value;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+
+
+@function var-color-fluid($color-key) {
+  /*! Construction d'une variable css de couleur fluide */
+  $color-name : fluid-#{$color-key};
+
+  @if $color-key =="no" {
+    $color-name : #{$color-key};
+  }
+
+  ;
+  @return var(#{"--var-color-"}#{$color-name})
+};

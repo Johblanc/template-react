@@ -1,0 +1,25 @@
+
+
+@mixin class-font-color(
+  $color-formats :        $color-pantone-default,
+  $default-color-key :    $font-color-default-key,
+  $class-name :           $font-color-class-name,
+  $inter-color-number :   $inter-color-number-default, 
+  $class-name-suffix : ""
+){
+
+
+  /*! Font Colors */
+  .#{$class-name}{
+
+    @include get-font-color($default-color-key );
+    &-no {
+      @include get-font-color("no" );
+    }
+      @each $_, $color-key in number-sequence(0,($inter-color-number + 1) * 2){
+        &#{name-class($color-key)}#{name-class($class-name-suffix)}  {
+          @include get-font-color($color-key  );
+        };
+      }
+  }
+}

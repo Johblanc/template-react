@@ -1,0 +1,17 @@
+
+@use "sass:map";
+
+
+// Permet de générer la répartition ortogonale d'une propriété
+@mixin split-position-orto($property, $value, $position) {
+  $positions-orto-ref : mix-orto-xy();
+  @if $position == "" {
+    #{$property}: $value;
+  }
+  @else {
+    $positions : map.get($positions-orto-ref, $position );
+    @each $pos in $positions {
+      #{$property}-#{$pos}: $value
+    }
+  }
+};

@@ -1,0 +1,21 @@
+.contact-card {
+  @include get-flex();
+  width: 300px;
+  @include get-padding("xs");
+  @include get-margin("sm");
+  @include get-radius("sm");
+  @include get-borders();
+
+  img, svg {
+    @include get-margin("sm", "r");
+  }
+  div {
+    >p:first-child {
+
+      strong {
+        font-size: 120%;
+      }
+      @include get-margin("sm","b");
+    }
+  }
+}

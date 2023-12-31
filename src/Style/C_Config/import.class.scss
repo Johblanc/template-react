@@ -1,0 +1,28 @@
+
+
+@import '../B_Utilities/import.class.scss';
+
+@import './import.props.scss';
+
+@import './ColorsFluid/ColorsFluid.class.scss';
+@import './SizesBox/SizesBox.class.scss';
+
+.#{$root-class-name} {
+  
+  @include get-sizes-css-variables();
+  @include get-colors-css-variables(); 
+  @include get-colors-theme-to-fluid (); 
+  @include get-opacity-css-variables();
+}
+
+@include class-colors-theme-to-fluid($class-name-suffix : "");
+@if $breakpoints-class {
+  @each $key, $_ in $breakpoints-ref {
+    @include get-down-responsive($key){
+      @include class-colors-theme-to-fluid($class-name-suffix : #{$breakpoints-down-class-name}#{"-"}#{$key});
+    }
+    @include get-up-responsive($key){
+      @include class-colors-theme-to-fluid($class-name-suffix : #{$breakpoints-up-class-name}#{"-"}#{$key});
+    }
+  }
+}

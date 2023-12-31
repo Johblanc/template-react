@@ -1,0 +1,24 @@
+.connection-sections {
+  @include get-up-responsive("md") {
+    @include get-flex("xctr", "yctr");
+  }
+
+
+  section {
+    max-width: 650px;
+
+    @include get-down-responsive("md") {
+      max-width: 100%;
+    }
+
+    form {
+      @include get-flex("xctr", "yctr", "col");
+      >div {
+        @include get-width("90");
+      }
+      button {
+        @include get-margin("sm");
+      }
+    }
+  }
+}

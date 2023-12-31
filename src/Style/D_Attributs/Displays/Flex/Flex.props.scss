@@ -1,0 +1,33 @@
+@use "sass:map";
+
+@import './Flex.direction.props.scss';
+@import './Flex.wrap.props.scss';
+@import './Flex.x.props.scss';
+@import './Flex.y.props.scss';
+
+@mixin get-flex(
+  $flex-x-key: $flex-default-x-key, 
+  $flex-y-key: $flex-default-y-key, 
+  $flex-direction : $flex-default-direction,
+  $flex-wrap : $flex-default-wrap
+) {
+  display: flex !important ;
+
+  @if $flex-direction !="" {
+    @include get-flex-direction($flex-direction);
+  }
+
+  @if $flex-wrap !="" {
+    @include get-flex-wrap($flex-wrap);
+  }
+
+  @if $flex-x-key !="" {
+    @include get-flex-x-key($flex-x-key);
+  }
+
+  @if $flex-y-key !="" {
+    @include get-flex-y-key($flex-y-key);
+  }
+}
+
+

@@ -1,0 +1,33 @@
+@use "sass:map";
+
+@import './PositionsOrtogonal.y.constant.scss';
+@import './PositionsOrtogonal.x.constant.scss';
+
+// Liste des Noms de classes pour les positions ortogonales les deux axes 
+@function mix-orto-xy() {
+  $result : [];
+
+  @each $x-key,
+  $x-value in $positions-orto-x {
+
+    @each $y-key,
+    $y-value in $positions-orto-y {
+
+      $value : [];
+      @each $x-pos in $x-value {
+        $value : append($value , $x-pos )
+      }
+      @each $y-pos in $y-value {
+        $value : append($value , $y-pos )
+      }
+      
+      @if $x-key == "" and $y-key =="" {
+        $value : append(append(append(append([] , "right") , "left") , "top") , "bottom")
+      }
+      $result : map.merge($result, (#{$y-key}#{$x-key} : $value));
+    }
+    
+  }
+
+  @return $result;
+};

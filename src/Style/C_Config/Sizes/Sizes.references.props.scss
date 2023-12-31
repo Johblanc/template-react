@@ -1,0 +1,10 @@
+
+
+@mixin get-sizes-ref-css-variables ($size-formats) {
+  /*!    -> Tailles de référence */
+  @each $size-format-key, $size-format-value in $size-formats {
+    #{"--var-ref-size-"}#{$size-format-key}: $size-format-value;
+  } 
+  --var-size-no: 0;
+};
+

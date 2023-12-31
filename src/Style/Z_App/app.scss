@@ -1,0 +1,14 @@
+@import '../D_Attributs/import.setup.scss';
+@import './personalize.setup.scss';
+@import '../D_Attributs/import.props.scss';
+@import '../C_Config/ColorsFluid/ColorsFluid.class.scss';
+@import '../E_Markups/Import.scss';
+@import '../F_Customs/Import.scss';
+
+
+@include class-colors-theme-to-fluid();
+
+
+
+
+

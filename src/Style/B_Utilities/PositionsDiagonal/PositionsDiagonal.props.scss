@@ -1,0 +1,15 @@
+
+@use "sass:map";
+
+// Permet de générer la répartition diagonale d'une propriété
+@mixin split-position-diag($property-prefix, $property-suffix, $value, $position) {
+  @if $position == "" {
+    #{$property-prefix}-#{$property-suffix}: $value;
+  }
+  @else {
+    $positions : map.get($positions-diag-ref, $position );
+    @each $pos in $positions {
+      #{$property-prefix}-#{$pos}-#{$property-suffix}: $value
+    }
+  }
+}

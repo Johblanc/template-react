@@ -1,0 +1,14 @@
+
+.sub-section {
+  @include get-margin("md");
+
+  h3 {
+    @include get-padding("sm");
+    @include get-radius("sm");
+    @include get-borders("xs", 3, "bl");
+  }
+  >div {
+    @include get-radius("sm");
+    @include get-borders("xs", 3, "br");
+  }
+}

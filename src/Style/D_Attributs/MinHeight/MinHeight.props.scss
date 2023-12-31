@@ -1,0 +1,18 @@
+@use "sass:map";
+
+@mixin get-min-height (
+  $box-key : $min-height-default-box-key,
+  $all-formats : $min-height-all-formats,
+  $default-format : $min-height-default-format,
+  $size-rates: $size-box-rates-default, 
+  $size-formats : $size-formats-default
+  ) {
+  @include get-box-size-props(
+    min-height,
+    $box-key,
+    $all-formats,
+    $default-format,
+    $size-rates,
+    $size-formats,
+  );
+}

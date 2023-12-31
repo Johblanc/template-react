@@ -1,0 +1,5 @@
+@use "sass:map";
+
+@mixin get-flex-wrap ($flex-wrap) {
+  flex-wrap: map.get($flex-wrap-ref, $flex-wrap);
+};

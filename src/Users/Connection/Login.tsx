@@ -57,43 +57,43 @@ export function Login() {
   };
 
   return (
-    <form>
+    <section>
       <h3>Connection</h3>
-      <StringEntry
-        idName={"login-pseudo"}
-        labelContent={"Pseudo"}
-        value={body.pseudo}
-        setValue={(val) => handleChange("pseudo", val || "")}
-        setValid={(val) => handleValidate('pseudo', val)}
-        validators={[
-          Validator.String.minLenght(5,EValidatorState.bad)
-        ]}
-      />
-      <StringEntry
-        idName={"login-password"}
-        labelContent={"Mot de passe"}
-        value={body.password}
-        setValue={(val) => handleChange("password", val || "")}
-        setValid={(val) => handleValidate('password', val)}
-        validators={[
-          Validator.String.passwords(EValidatorState.bad)
-        ]}
-        isPass
-      />
-      <div>
-        {messages.map((item, i) => (
-          <p key={i}>{item}</p>
-        ))}
-      </div>
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          handleLogin();
-        }}
-        disabled={!validate.pseudo || !validate.password}
-      >
-        Connection
-      </button>
-    </form>
+      <form>
+        <StringEntry
+          idName={"login-pseudo"}
+          className={"form-entry"}
+          labelContent={"Pseudo"}
+          value={body.pseudo}
+          setValue={(val) => handleChange("pseudo", val || "")}
+          setValid={(val) => handleValidate("pseudo", val)}
+          validators={[Validator.String.minLenght(5, EValidatorState.bad)]}
+        />
+        <StringEntry
+          idName={"login-password"}
+          className={"form-entry"}
+          labelContent={"Mot de passe"}
+          value={body.password}
+          setValue={(val) => handleChange("password", val || "")}
+          setValid={(val) => handleValidate("password", val)}
+          validators={[Validator.String.passwords(EValidatorState.bad)]}
+          isPass
+        />
+        <div>
+          {messages.map((item, i) => (
+            <p key={i}>{item}</p>
+          ))}
+        </div>
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            handleLogin();
+          }}
+          disabled={!validate.pseudo || !validate.password}
+        >
+          Connection
+        </button>
+      </form>
+    </section>
   );
 }

@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { TValidatorCallback } from "../../Utilities/Validators/ValidatorCallback.type";
 import { TValidatorConfirmation } from "../../Utilities/Validators/ValidatorConfirmation.type";
 import { Checkable } from "../Checkable/Checkable";
-import "../form.style.css";
 
 interface ISelectFilesProps {
   idName: string;
   labelContent?: string | JSX.Element;
   accept?: string;
+  current?: string;
   setValue?: (val?: FileList | null) => void;
   setValid?: (val: boolean) => void;
   validators?: TValidatorCallback<FileList | null>[];
@@ -21,6 +21,7 @@ export function SelectFiles({
   idName,
   labelContent = undefined,
   accept = undefined,
+  current = undefined,
   setValue = undefined,
   setValid = undefined,
   validators = undefined,
@@ -30,7 +31,6 @@ export function SelectFiles({
   multiple = false,
 }: ISelectFilesProps) {
   const loopValidators = (val?: FileList | null): TValidatorConfirmation => {
-    
     if (validators && val !== undefined) {
       let result: TValidatorConfirmation | undefined = undefined;
       for (const validator of validators) {
@@ -63,7 +63,7 @@ export function SelectFiles({
     if (setValid) {
       setValid(newValid.valid || !checkValue);
     }
-  }, [checkValue,inputValue]);
+  }, [checkValue, inputValue]);
 
   useEffect(() => {
     if (setValue) {
@@ -88,32 +88,47 @@ export function SelectFiles({
   };
 
   return (
-    <div className={`${isValid.state ? `${isValid.state} ` : ""}${className}`}>
+    <div
+      className={`${
+        isValid.state ? `theme-${isValid.state} ` : ""
+      }${className}`}
+    >
       <div>
-        {optional !== "forced" && (
-          <Checkable
-            idName={`${idName}-option`}
-            value={checkValue}
-            setValue={setCheckValue}
-            hidden={optional === "required"}
-            disabled={disabled}
-            labelContent={`Activer : ${labelContent}`}
-            labelHide={true}
+        <div>
+          {optional !== "forced" && (
+            <Checkable
+              idName={`${idName}-option`}
+              value={checkValue}
+              setValue={setCheckValue}
+              hidden={optional === "required"}
+              disabled={disabled}
+              labelContent={`Activer : ${labelContent}`}
+              labelHide={true}
+            />
+          )}
+          <label className={disabled ? "disabled" : ""} htmlFor={idName}>
+            {labelContent}
+          </label>
+        </div>
+
+        {!checkValue && current && <img src={current} />}
+        {checkValue && (
+          <input
+            type="file"
+            id={idName}
+            className={!checkValue ? "theme-default" : ""}
+            accept={accept}
+            onChange={(e) => handleChange(e.target.files)}
+            disabled={disabled || !checkValue}
+            multiple={multiple}
           />
         )}
-        <label className={disabled ? "disabled" : ""} htmlFor={idName}>
-          {labelContent}
-        </label>
-        <input
-          type="file"
-          id={idName}
-          accept={accept}
-          onChange={(e) => handleChange(e.target.files)}
-          disabled={disabled || !checkValue}
-          multiple={multiple}
-        />
       </div>
-      <p>{isValid.message}</p>
+      {checkValue && (
+        <p className={!checkValue ? "theme-default" : ""}>
+          {!checkValue ? "_" : isValid.message}
+        </p>
+      )}
     </div>
   );
 }

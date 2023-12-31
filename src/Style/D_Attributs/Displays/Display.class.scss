@@ -1,0 +1,11 @@
+
+@import './Flex/Flex.class.scss';
+
+@mixin class-display ($displays : $displays-ref, $class-name : $display-class-name, $class-name-suffix : ""){
+  /*! All Displays */
+  @each $key, $value in $displays {
+    .#{$class-name}-#{$key}#{name-class($class-name-suffix)} {
+      display: $value;
+    }
+  }
+}

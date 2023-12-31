@@ -1,0 +1,21 @@
+
+@mixin get-colors-theme-to-fluid (
+  $theme : $default-theme-to-fluid ,
+  $inter-color-number: $inter-color-number-default
+) {
+  $theme-name : -#{$theme};
+
+  @if $theme =="" {
+    /*! Assignation du Theme de couleurs par défaut aux couleurs Fluides */
+    $theme-name : "";
+  }
+  @else {
+    /*! Assignation du Theme de couleurs #{$theme} aux couleurs Fluides */
+  }
+
+  @each $_, $i in number-sequence(0, ($inter-color-number + 1) * 2) {
+    #{"--var-color-fluid-"}#{$i}: var(#{"--var-color"}#{$theme-name}#{"-"}#{$i})
+  }
+
+  /*! */
+};

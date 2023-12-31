@@ -1,0 +1,32 @@
+.section-all-users {
+  @include get-flex("","","col");
+
+  .search-bar {
+    @include get-flex("xsbt","","","wrap");
+    >* {
+      @include get-padding("xl");
+      >div {
+        @include get-flex();
+        label {
+          @include get-margin("md","r");
+        }
+      }
+    }
+  }
+
+  .items {
+    @include get-flex-grow(1);
+    >div{
+      @include get-flex("xsev","","","wrap");
+    }
+  }
+
+  .pages {
+    @include get-flex("xsev");
+    @include get-padding("md","y");
+    button {
+      @include get-padding("xl","x");
+      @include get-radius("xl");
+    }
+  }
+}

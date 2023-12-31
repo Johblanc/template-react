@@ -1,0 +1,19 @@
+
+
+@mixin get-padding($size-key : "" , $position : $padding-default-position , $size-format : "" ){
+  @if $size-key == "" {
+    $size-key : $padding-default-size-key;
+  }
+  @if $size-format == "" {
+    $size-format : $padding-default-size-format;
+  }
+  @if $size-key == "no" {
+    @include split-position-orto(padding, 0, $position)
+  }
+  @else if $size-key == "auto" {
+    @include split-position-orto(padding, auto, $position)
+  }
+  @else {
+    @include split-position-orto(padding, var-size($size-format, $size-key), $position)
+  }
+}

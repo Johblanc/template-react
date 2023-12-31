@@ -1,0 +1,16 @@
+
+.avatar-small {
+  width: 3em;
+  height: 3em;
+  .f-5 {
+    @include get-fill(5)
+  }
+}
+
+.avatar-large {
+  width: 10em;
+  height: 10em;
+  .f-5 {
+    @include get-fill(5)
+  }
+}

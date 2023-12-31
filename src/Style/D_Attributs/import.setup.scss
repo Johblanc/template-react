@@ -1,0 +1,28 @@
+@import '../C_Config/import.setup.scss';
+
+@import './Displays/Display.setup.scss';
+@import './FlexShrink/FlexShrink.setup.scss';
+@import './FlexGrow/FlexGrow.setup.scss';
+@import './FlexBasis/FlexBasis.setup.scss';
+
+
+@import './Height/Height.setup.scss';
+@import './Width/Width.setup.scss';
+@import './MinHeight/MinHeight.setup.scss';
+@import './MinWidth/MinWidth.setup.scss';
+@import './MaxHeight/MaxHeight.setup.scss';
+@import './MaxWidth/MaxWidth.setup.scss';
+
+@import './FontSizes/FontSizes.setup.scss';
+@import './FontColors/FontColor.setup.scss';
+@import './TextAlign/TextAlign.setup.scss';
+
+@import './Background/Background.setup.scss';
+@import './Fill/Fill.setup.scss';
+@import './Opacity/Opacity.setup.scss';
+
+@import './Margin/Margin.setup.scss';
+@import './Padding/Padding.setup.scss';
+
+@import './BorderRadius/BorderRadius.setup.scss';
+@import './Borders/Borders.setup.scss';

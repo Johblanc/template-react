@@ -1,0 +1,7 @@
+
+
+@mixin get-fill(
+  $color-key : $fill-default-key,
+){
+  fill : var-color-fluid($color-key);
+}

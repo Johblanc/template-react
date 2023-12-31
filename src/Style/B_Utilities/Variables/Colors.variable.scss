@@ -1,0 +1,13 @@
+
+
+@function var-color($color-key, $color-format : "") {
+  /*! Construction d'une variable css de couleur */
+  $color-name : #{$color-format}-#{$color-key};
+
+  @if $color-format =="" or $color-key =="no" {
+    $color-name : #{$color-key};
+  }
+
+  ;
+  @return var(#{"--var-color-"}#{$color-name})
+};

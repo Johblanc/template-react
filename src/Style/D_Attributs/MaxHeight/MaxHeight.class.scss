@@ -1,0 +1,23 @@
+
+@mixin class-max-height (
+  $class-name : $max-height-class-name,
+  $default-box-key : $max-height-default-box-key,
+  $all-formats : $max-height-all-formats,
+  $default-format : $max-height-default-format,
+  $size-rates: $size-box-rates-default, 
+  $size-formats : $size-formats-default,
+  $class-name-suffix : ""
+) {
+  /*! Max Height */
+  @include class-box-size-props(
+    max-height,
+    $class-name,
+    $default-box-key,
+    $all-formats,
+    $default-format,
+    $size-rates,
+    $size-formats,
+    $class-name-suffix
+  )
+}
+

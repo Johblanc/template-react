@@ -1,0 +1,23 @@
+
+@import './Sizes.references.props.scss';
+@import './Sizes.byFormat.props.scss';
+
+@mixin get-sizes-css-variables (
+    $size-formats: $size-formats-default, 
+    $size-rates: $size-rates-default, 
+    $size-font-rates: $size-font-rates-default,
+    $size-box-rates: $size-box-rates-default,
+  ) {
+    /* Déclaration des variables css pour les tailles */
+  @include get-sizes-ref-css-variables ($size-formats);
+  @each $size-format-key, $_ in $size-formats {
+    @include get-sizes-by-format-css-variables ($size-format-key, $size-rates);
+  } 
+  @each $size-format-key, $_ in $size-formats {
+    @include get-sizes-by-format-css-variables ($size-format-key, $size-font-rates, "fs");
+  } 
+  @each $size-format-key, $_ in $size-formats {
+    @include get-sizes-by-format-css-variables ($size-format-key, $size-box-rates, "col");
+  } 
+  /*! */
+};

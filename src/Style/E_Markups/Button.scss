@@ -1,0 +1,26 @@
+
+button, .button {
+  text-decoration: none;
+  cursor: pointer;
+  @include get-padding("sm");
+  @include get-background(6);
+  @include get-font-color(1);
+  @include get-borders("xs", 5, "br");
+  @include get-borders("xs", 7, "tl");
+  @include get-radius("sm");
+
+  &:disabled {
+    cursor: not-allowed;
+    @include get-background(1);
+    @include get-font-color(3);
+    @include get-borders("xs", 0, "br");
+    @include get-borders("xs", 2, "tl");
+  }
+
+  &:hover:not(:disabled) {
+    @include get-background(7);
+    @include get-font-color(1);
+    @include get-borders("xs", 6, "br");
+    @include get-borders("xs", 8, "tl");
+  }
+}

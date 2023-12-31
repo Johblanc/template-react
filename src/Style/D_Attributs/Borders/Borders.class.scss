@@ -1,0 +1,55 @@
+
+
+@mixin class-borders(
+  $size-rates:            $size-rates-default,
+  $default-size-key :     $border-default-size-key,     
+  $default-size-format :  $border-default-size-format,  
+  $default-color-key :    $border-default-color-key,
+  $all-formats :          $border-class-all-formats,
+  $class-name :           $border-class-name,
+  $inter-color-number :   $inter-color-number-default, 
+  $class-name-suffix : ""
+){
+
+  $positions : mix-orto-xy();
+
+  /*! Borders - [Size] - [Color] - [Position_Y Position_X] */
+  .#{$class-name}{
+
+    @include class-position-orto(
+      border, 
+      calc(var-size($default-size-format, $default-size-key)/2) solid var-color-fluid($default-color-key), 
+      $class-name-suffix
+    );
+    &-no {
+      @include class-position-orto(
+        border, 
+        0, 
+        $class-name-suffix
+      );
+    }
+    @each $_, $color-key in number-sequence(0,($inter-color-number + 1) * 2){
+      @each $rate-key, $_ in $size-rates {
+        &#{name-class($rate-key)}#{name-class($color-key)} {
+          @include class-position-orto(
+            border, 
+            calc(var-size($default-size-format, $rate-key)/2) solid var-color-fluid($color-key), 
+            $class-name-suffix
+          );
+        };
+
+        @if $all-formats {
+          @each $size-format, $_ in $size-formats {
+            &#{name-class($rate-key)}#{name-class($rate-format)}#{name-class($color-key)} {
+              @include class-position-orto(
+                border, 
+                calc(var-size($size-format, $rate-key)/2) solid var-color-fluid($color-key), 
+                $class-name-suffix
+              );
+            }
+          }
+        }
+      }
+    }
+  }
+}

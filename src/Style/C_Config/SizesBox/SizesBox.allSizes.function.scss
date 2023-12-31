@@ -1,0 +1,29 @@
+
+@function box-sizes-map (
+  $all-formats : false,
+  $default-format : "static",
+  $rates : $size-box-rates-default,
+  $formats : $size-formats-default,
+){
+  $result : [];
+  
+  @each $rate, $value in $size-generics-ref {
+    $result : append($result, #{$rate} $value);
+    //$result : append($result, #{$rate}#{"-neg"} calc(100% - $value));
+  };
+
+  @each $rate, $_ in $rates {
+    $result : append($result, #{$rate} var-box-size($default-format,$rate));
+    $result : append($result, #{$rate}#{"-neg"} var-box-size($default-format,$rate,true));
+  };
+  @if $all-formats {
+    @each $format, $_ in $formats {
+      @each $rate, $_ in $rates {
+        $result : append($result, #{$rate}#{"-"}#{$format} var-box-size($format,$rate));
+        $result : append($result, #{$rate}#{"-"}#{$format}#{"-neg"} var-box-size($format,$rate,true));
+      };
+    };
+  }
+
+  @return $result
+}

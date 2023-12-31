@@ -1,0 +1,52 @@
+.form-entry {
+  @include get-margin("md");
+
+  img {
+    width: 10em;
+    height: 10em;
+  }
+
+  .no-size {
+    display: none;
+  }
+
+  .togglable {
+    svg {
+      width: 1.2em;
+      .f-3 {
+        @include get-fill(3);
+      }
+      .f-8 {
+        @include get-fill(8);
+      }
+    }
+  }
+
+  >div {
+    @include get-padding("sm");
+
+    @include get-up-responsive("xs") {
+      @include get-flex();
+    }
+    @include get-down-responsive("xs") {
+      @include get-flex($flex-direction : "col");
+    }
+    >div {
+      @include get-flex();
+      >label {
+        @include get-padding("md","l");
+        width: 200px;
+      }
+    }
+
+
+    >input {
+      @include get-flex-grow();
+    }
+  }
+
+  >p {
+    @include get-text-align("c");
+    @include get-font-color(6);
+  }
+}

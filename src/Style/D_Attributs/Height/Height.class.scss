@@ -1,0 +1,23 @@
+
+@mixin class-height (
+  $class-name : $height-class-name,
+  $default-box-key : $height-default-box-key,
+  $all-formats : $height-all-formats,
+  $default-format : $height-default-format,
+  $size-rates: $size-box-rates-default, 
+  $size-formats : $size-formats-default, 
+  $class-name-suffix : ""
+) {
+  /*! Height */
+  @include class-box-size-props(
+    height,
+    $class-name,
+    $default-box-key,
+    $all-formats,
+    $default-format,
+    $size-rates,
+    $size-formats,
+    $class-name-suffix
+  )
+}
+

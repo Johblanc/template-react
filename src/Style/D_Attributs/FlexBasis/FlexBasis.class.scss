@@ -1,0 +1,24 @@
+
+@use "sass:map";
+
+@mixin class-flex-basis(
+  $class-name : $flex-basis-class-name,
+  $default-box-key : $flex-basis-default-box-key,
+  $all-formats : $flex-basis-all-formats,
+  $default-format : $flex-basis-default-format,
+  $size-rates: $size-box-rates-default, 
+  $size-formats : $size-formats-default,
+  $class-name-suffix : ""
+) {
+  /*! Flex Basis */
+  @include class-box-size-props(
+    flex-basis,
+    $class-name,
+    $default-box-key,
+    $all-formats,
+    $default-format,
+    $size-rates,
+    $size-formats,
+    $class-name-suffix
+  )
+}

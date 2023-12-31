@@ -1,0 +1,6 @@
+
+header {
+  @include get-padding("md");
+  @include get-background(1);
+  @include get-borders("xs", 0, "b");
+}

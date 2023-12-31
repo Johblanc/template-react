@@ -1,0 +1,12 @@
+
+
+@mixin get-font-size($size-key : "", $size-format : ""){
+  @if $size-key == "" {
+    $size-key : $font-size-default-size-key;
+  }
+  @if $size-format == "" {
+    $size-format : $font-size-default-size-format;
+  }
+  font-size: var-font-size($size-format, $size-key);
+}
+

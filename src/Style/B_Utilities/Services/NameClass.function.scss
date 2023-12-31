@@ -1,0 +1,8 @@
+
+@function name-class ($name) {
+  $result : -#{$name};
+  @if $name == "" {
+    $result : ""
+  };
+  @return $result
+};

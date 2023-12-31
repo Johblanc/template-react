@@ -12,5 +12,5 @@ export function Disconnect() {
     setToken("");
   };
 
-  return <button onClick={handleDisconnect}>Deconnection</button>;
+  return <button className="theme-bad" onClick={handleDisconnect}>Deconnection</button>;
 }

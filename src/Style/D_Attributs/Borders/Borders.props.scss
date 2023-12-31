@@ -1,0 +1,14 @@
+
+
+@mixin get-borders(
+  $size-key : $border-default-size-key,
+  $color-key : $border-default-color-key,
+  $position : $border-default-position,
+  $size-format  : $border-default-size-format ,
+){
+  @include split-position-orto(
+    border, 
+    calc(var-size($size-format, $size-key)/2) solid var-color-fluid($color-key),
+    $position
+  );
+}

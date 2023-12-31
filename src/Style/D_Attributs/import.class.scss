@@ -1,0 +1,13 @@
+@import './allAttributs.class.scss';
+
+@include all-attributs-class("");
+@if $breakpoints-class {
+  @each $key, $_ in $breakpoints-ref {
+    @include get-down-responsive($key){
+      @include all-attributs-class(#{$breakpoints-down-class-name}#{"-"}#{$key});
+    }
+    @include get-up-responsive($key){
+      @include all-attributs-class(#{$breakpoints-up-class-name}#{"-"}#{$key});
+    }
+  }
+}

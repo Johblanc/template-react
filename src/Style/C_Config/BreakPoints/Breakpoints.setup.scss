@@ -1,0 +1,21 @@
+
+
+// BREAKPOINTS ---------------------------------------------------------------------
+
+// Liste des BreakPoints
+$breakpoints-ref : (
+  "xs" : 576px ,
+  "sm" : 768px ,
+  "md" : 992px ,
+  "lg" : 1984px,
+  "xl" : 3968px
+);
+
+// Ajout des classes responcives
+$breakpoints-class : true;
+
+// Nom de classe pour les Max-Width
+$breakpoints-down-class-name : "break-down";
+
+// Nom de classe pour les Min-Width
+$breakpoints-up-class-name : "break-up";

@@ -1,0 +1,57 @@
+@import '../C_Config/import.class.scss';
+
+@import './import.props.scss';
+
+@import './Displays/Display.class.scss';
+@import './FlexShrink/FlexShrink.class.scss';
+@import './FlexGrow/FlexGrow.class.scss';
+@import './FlexBasis/FlexBasis.class.scss';
+
+@import './Height/Height.class.scss';
+@import './Width/Width.class.scss';
+@import './MinHeight/MinHeight.class.scss';
+@import './MinWidth/MinWidth.class.scss';
+@import './MaxHeight/MaxHeight.class.scss';
+@import './MaxWidth/MaxWidth.class.scss';
+
+@import './FontSizes/FontSizes.class.scss';
+@import './FontColors/FontColor.class.scss';
+@import './TextAlign/TextAlign.class.scss';
+
+@import './Background/Background.class.scss';
+@import './Opacity/Opacity.class.scss';
+
+@import './Margin/Margin.class.scss';
+@import './Padding/Padding.class.scss';
+
+@import './BorderRadius/BorderRadius.class.scss';
+@import './Borders/Borders.class.scss';
+
+@mixin all-attributs-class ($suffix){
+  @include class-display($class-name-suffix : $suffix);
+  @include class-flex($class-name-suffix : $suffix);
+  @include class-flex-shrink($class-name-suffix : $suffix);
+  @include class-flex-grow($class-name-suffix : $suffix);
+  @include class-flex-basis($class-name-suffix : $suffix);
+  
+  @include class-height($class-name-suffix : $suffix);
+  @include class-width($class-name-suffix : $suffix);
+  @include class-max-height($class-name-suffix : $suffix);
+  @include class-max-width($class-name-suffix : $suffix);
+  @include class-min-height($class-name-suffix : $suffix);
+  @include class-min-width($class-name-suffix : $suffix);
+  
+  @include class-font-size($class-name-suffix : $suffix);
+  @include class-font-color($class-name-suffix : $suffix);
+  @include class-text-align($class-name-suffix : $suffix);
+  
+  @include class-background($class-name-suffix : $suffix);
+  @include class-fill($class-name-suffix : $suffix);
+  @include class-opacity($class-name-suffix : $suffix);
+  
+  @include class-margin($class-name-suffix : $suffix);
+  @include class-padding($class-name-suffix : $suffix);
+  
+  @include class-radius($class-name-suffix : $suffix);
+  @include class-borders($class-name-suffix : $suffix);
+}

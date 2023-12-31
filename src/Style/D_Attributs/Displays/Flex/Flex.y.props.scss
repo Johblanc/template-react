@@ -1,0 +1,5 @@
+@use "sass:map";
+
+@mixin get-flex-y-key ($flex-y-key) {
+  align-items: map.get($flex-align-items-ref, $flex-y-key);
+};

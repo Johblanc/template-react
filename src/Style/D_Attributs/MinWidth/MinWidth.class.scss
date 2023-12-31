@@ -1,0 +1,23 @@
+
+@mixin class-min-width (
+  $class-name : $min-width-class-name,
+  $default-box-key : $min-width-default-box-key,
+  $all-formats : $min-width-all-formats,
+  $default-format : $min-width-default-format,
+  $size-rates: $size-box-rates-default, 
+  $size-formats : $size-formats-default,
+  $class-name-suffix : ""
+) {
+  /*! Flex Basis */
+  @include class-box-size-props(
+    min-width,
+    $class-name,
+    $default-box-key,
+    $all-formats,
+    $default-format,
+    $size-rates,
+    $size-formats,
+    $class-name-suffix
+  )
+}
+

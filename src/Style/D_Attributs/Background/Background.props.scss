@@ -1,0 +1,7 @@
+
+
+@mixin get-background(
+  $color-key : $background-default-key,
+){
+  background : var-color-fluid($color-key);
+}

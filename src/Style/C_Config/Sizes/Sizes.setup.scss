@@ -1,0 +1,36 @@
+
+// TAILLES -------------------------------------------------------------------------
+
+// Références d'unité de Tailles
+$size-formats-default : (
+  "dynamic" : max(min(1vw, 1vh), 4px),
+  "static" : 14px
+);
+
+// Taux pour les Tailles de dimentionnement
+$size-rates-default : (
+  "xs" : 0.25,
+  "sm" : 0.5,
+  "md" : 1,
+  "lg" : 1.5,
+  "xl" : 2
+);
+
+// Taux pour les Tailles de font-size
+$size-font-rates-default : (
+  "xs" : 1,
+  "sm" : 1.2,
+  "md" : 1.4,
+  "lg" : 1.6,
+  "xl" : 1.8
+);
+
+// Taux pour les Tailles de boites
+$size-box-rates-default : (
+  "xs" : 3,
+  "sm" : 5,
+  "md" : 10,
+  "lg" : 15,
+  "xl" : 20
+);
+

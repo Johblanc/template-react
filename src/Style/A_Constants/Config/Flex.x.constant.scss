@@ -1,0 +1,16 @@
+
+// FLEX JUSTIFY --------------------------------------------------------------------
+
+// Liste des Noms de classes pour les display flex justify-content
+$flex-justify-content-ref : (
+  "": none,
+  "xctr" : center,
+  "xend" : flex-end,
+  "xlft" : left,
+  "xrgt" : right,
+  "xsar" : space-around,
+  "xsbt" : space-between,
+  "xsev" : space-evenly,
+  "xsta" : flex-start,
+  "xstr" : stretch,
+);

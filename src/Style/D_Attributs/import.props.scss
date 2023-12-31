@@ -1,0 +1,27 @@
+@import '../C_Config/import.props.scss';
+
+@import './Displays/Display.props.scss';
+@import './FlexShrink/FlexShrink.props.scss';
+@import './FlexGrow/FlexGrow.props.scss';
+@import './FlexBasis/FlexBasis.props.scss';
+
+@import './Height/Height.props.scss';
+@import './Width/Width.props.scss';
+@import './MinHeight/MinHeight.props.scss';
+@import './MinWidth/MinWidth.props.scss';
+@import './MaxHeight/MaxHeight.props.scss';
+@import './MaxWidth/MaxWidth.props.scss';
+
+@import './FontSizes/FontSizes.props.scss';
+@import './FontColors/FontColor.props.scss';
+@import './TextAlign/TextAlign.props.scss';
+
+@import './Background/Background.props.scss';
+@import './Fill/Fill.props.scss';
+@import './Opacity/Opacity.props.scss';
+
+@import './Margin/Margin.props.scss';
+@import './Padding/Padding.props.scss';
+
+@import './BorderRadius/BorderRadius.props.scss';
+@import './Borders/Borders.props.scss';

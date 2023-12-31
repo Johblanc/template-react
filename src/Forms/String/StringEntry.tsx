@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { TValidatorCallback } from "../../Utilities/Validators/ValidatorCallback.type";
 import { TValidatorConfirmation } from "../../Utilities/Validators/ValidatorConfirmation.type";
 import { Checkable } from "../Checkable/Checkable";
-import "../form.style.css";
 
 interface IStringEntryProps {
   idName: string;
@@ -65,7 +64,7 @@ export function StringEntry({
     if (setValid) {
       setValid(newValid.valid || !checkValue);
     }
-  }, [value,checkValue]);
+  }, [value, checkValue]);
 
   useEffect(() => {
     if (setValue) {
@@ -84,31 +83,40 @@ export function StringEntry({
   };
 
   return (
-    <div className={`${isValid.state ? `${isValid.state} ` : ""}${className}`}>
+    <div
+      className={`${
+        isValid.state ? `theme-${isValid.state} ` : ""
+      }${className}`}
+    >
       <div>
-        {optional !== "forced" && (
-          <Checkable
-            idName={`${idName}-option`}
-            value={checkValue}
-            setValue={setCheckValue}
-            hidden={optional === "required"}
-            disabled={disabled}
-            labelContent={`Activer : ${labelContent}`}
-            labelHide={true}
-          />
-        )}
-        <label className={disabled ? "disabled" : ""} htmlFor={idName}>
-          {labelContent}
-        </label>
+        <div>
+          {optional !== "forced" && (
+            <Checkable
+              idName={`${idName}-option`}
+              value={checkValue}
+              setValue={setCheckValue}
+              hidden={optional === "required"}
+              disabled={disabled}
+              labelContent={`Activer : ${labelContent}`}
+              labelHide={true}
+            />
+          )}
+          <label className={disabled ? "disabled" : ""} htmlFor={idName}>
+            {labelContent}
+          </label>
+        </div>
         <input
           type={isPass ? "password" : "text"}
           id={idName}
+          className={!checkValue ? "theme-default" : ""}
           value={inputValue || ""}
           onChange={(e) => handleChange(e.target.value)}
           disabled={disabled || !checkValue}
         />
       </div>
-      <p>{isValid.message}</p>
+      <p className={!checkValue ? "theme-default" : ""}>
+        {!checkValue ? "_" : isValid.message}
+      </p>
     </div>
   );
 }

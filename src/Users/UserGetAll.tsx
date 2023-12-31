@@ -4,6 +4,7 @@ import { TUser } from "../Types/User.type";
 import { Requester } from "../Utilities/Requests/Requester";
 import { ContactCard } from "./Contacts/ContactCard";
 import { StringEntry } from "../Forms/String/StringEntry";
+import { TPages } from "../Types/Pages.type";
 
 type TRequestQuery = {
   itemsByPage?: number | undefined;
@@ -19,27 +20,15 @@ type TRequestQuery = {
 export function UserGetAll() {
   const { token, setToken } = useContext(TokenContext);
   const [users, setUsers] = useState<TUser[]>([]);
+  const [pages, setPages] = useState<TPages>();
   const [query, setQuery] = useState<TRequestQuery>({
-    itemsByPage : 5,
-    page : 1,
-    sort_keys:"pseudo",
-    pseudo : ""
+    itemsByPage: 5,
+    page: 1,
+    sort_keys: "pseudo",
+    pseudo: "",
   });
 
-
-  const handleItemByPage = (val : number)=> {
-    const newQuery : TRequestQuery = {...query};
-    newQuery.itemsByPage = val
-    setQuery(newQuery)
-  }
-
-  const handlePseudo = (val : string | undefined)=> {
-    const newQuery : TRequestQuery = {...query};
-    newQuery.pseudo = val
-    setQuery(newQuery)
-  }
-
-  useEffect(()=>{
+  useEffect(() => {
     const handleSearch = async () => {
       const response = await Requester.users.getAll(token, query);
       if (response.statusCode === 200) {
@@ -49,27 +38,73 @@ export function UserGetAll() {
         if (response.data) {
           setUsers(response.data);
         }
+        setPages(response.pages);
       }
     };
-    handleSearch()
-  },[query])
+    handleSearch();
+  }, [query]);
+
+  const handlePage = (val: number) => {
+    const newQuery: TRequestQuery = { ...query };
+    newQuery.page = val;
+    setQuery(newQuery);
+  };
+
+  const handleItemByPage = (val: number) => {
+    const newQuery: TRequestQuery = { ...query };
+    newQuery.page = 1;
+    newQuery.itemsByPage = val;
+    setQuery(newQuery);
+  };
+
+  const handlePseudo = (val: string | undefined) => {
+    const newQuery: TRequestQuery = { ...query };
+    newQuery.pseudo = val;
+    setQuery(newQuery);
+  };
+
 
   return (
-    <div>
+    <section className="section-all-users">
       <h2>Tous les utilisateurs</h2>
-      <StringEntry idName={"search-pseudo"} value={query.pseudo} setValue={handlePseudo} labelContent="Pseudo : " />
-      <div>
-        <label htmlFor="users-item-by-page" >Utilisateurs par page</label>
-        <select id="users-item-by-page" defaultValue={5} onChange={e => handleItemByPage(Number(e.target.value))}>
-          <option value={5}>5</option>
-          <option value={10}>10</option>
-          <option value={25}>25</option>
-          <option value={50}>50</option>
-        </select>
+      <div className="search-bar">
+        <StringEntry
+          idName={"search-pseudo"}
+          value={query.pseudo}
+          setValue={handlePseudo}
+          labelContent="Pseudo "
+        />
+        <div>
+          <label htmlFor="users-item-by-page">Utilisateurs par page </label>
+          <select
+            id="users-item-by-page"
+            defaultValue={5}
+            onChange={(e) => handleItemByPage(Number(e.target.value))}
+          >
+            <option value={5}>5</option>
+            <option value={10}>10</option>
+            <option value={25}>25</option>
+            <option value={50}>50</option>
+          </select>
+        </div>
       </div>
-      {users.map((item, i) => (
-        <ContactCard key={i} user={item} />
-      ))}
-    </ div>
+      <div className="items">
+        <div>
+        {users.map((item, i) => (
+          <ContactCard key={i} user={item} />
+        ))}
+        </div>
+      </div>
+      {pages && (
+        <div className="pages">
+          {pages.current.page === 1}
+          <button disabled={pages.current.page === 1} onClick={()=> handlePage(pages.first.page)} > {"<<"} </button>
+          <button disabled={pages.current.page === 1} onClick={()=> handlePage(pages.prev!.page)} > {"<"} </button>
+          <p>{pages.current.page}</p>
+          <button disabled={pages.current.page === pages.last.page} onClick={()=> handlePage(pages.next!.page)} > {">"} </button>
+          <button disabled={pages.current.page === pages.last.page} onClick={()=> handlePage(pages.last.page)} > {">>"} </button>
+        </div>
+      )}
+    </section>
   );
 }

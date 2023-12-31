@@ -1,0 +1,5 @@
+@use "sass:map";
+
+@mixin get-flex-direction ($flex-direction) {
+  flex-direction: map.get($flex-directions-ref, $flex-direction);
+};

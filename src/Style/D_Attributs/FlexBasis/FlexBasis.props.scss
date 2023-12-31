@@ -1,0 +1,19 @@
+
+@use "sass:map";
+
+@mixin get-flex-basis (
+  $box-key : $flex-basis-default-box-key,
+  $all-formats : $flex-basis-all-formats,
+  $default-format : $flex-basis-default-format,
+  $size-rates: $size-box-rates-default, 
+  $size-formats : $size-formats-default
+  ) {
+  @include get-box-size-props(
+    flex-basis,
+    $box-key,
+    $all-formats,
+    $default-format,
+    $size-rates,
+    $size-formats,
+  );
+}

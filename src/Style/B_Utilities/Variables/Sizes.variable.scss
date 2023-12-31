@@ -1,0 +1,6 @@
+
+// Construction d'une variable css de taille
+@function var-size($format , $rate) {
+  @return var(#{"--var-size-"}#{$format}#{"-"}#{$rate})
+};
+

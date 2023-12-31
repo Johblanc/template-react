@@ -1,0 +1,28 @@
+
+// POSITIONS -----------------------------------------------------------------------
+
+// Références de position dans un rectangle
+// 
+//                 TOP (Y)
+//       TL  __________________  TR
+//          |  	               |
+//          |  	               |
+// LEFT (X) |  	               |  RIGHT (X)
+//          |  	               |
+//          |__________________|
+//       BL                      BR
+//               BOTTOM (Y)
+// 
+
+// Liste des Noms de classes pour les positions diagonales et combinaison
+$positions-diag-ref : (
+  "" : append(append(append(append([] , "top-right") , "top-left") , "bottom-right") , "bottom-left"),
+  "tr" : append([] , "top-right"),
+  "tl" : append([] , "top-left" ),
+  "br" : append([] , "bottom-right"),
+  "bl" : append([] , "bottom-left" ),
+  "t" : append(append([] , "top-right") , "top-left"),
+  "r" : append(append([] , "top-right") , "bottom-right"),
+  "l" : append(append([] , "top-left") , "bottom-left"),
+  "b" : append(append([] , "bottom-right") , "bottom-left"),
+);

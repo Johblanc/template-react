@@ -25,14 +25,14 @@ export function CheckableIcon({ value, setValue, info,className = "" }: ICheckab
         height={16}
         rx={value ? 2 : 8}
         ry={value ? 2 : 8}
-        className="fill-3"
+        className="f-3"
         style={{
           transition: "all 0.5s",
         }}
       />
       <path
         d={value ? pathCheck : pathNotCheck}
-        className="fill-8"
+        className="f-8"
         style={{
           transform: `rotate(${value ? 0 : 900}deg)`,
           transition: "all 0.5s",

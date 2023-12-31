@@ -1,0 +1,60 @@
+nav {
+  //@include get-background(0);
+
+  * {
+    text-decoration: none;
+  }
+
+  >div {
+    @include get-flex("xsev", "", "", "wrap");
+    @include get-padding("xs","t");
+
+    .first {
+      @include get-flex-grow(1);
+    }
+    .last {
+      @include get-flex-grow(1);
+    }
+
+    >*:not(.first):not(.last) {
+      @include get-margin("xs","x");
+      @include get-padding("xl","x");
+      @include get-padding("sm","y");
+      @include get-radius("md","t");
+      cursor: pointer;
+    }
+
+    &.rank-1 {
+      @include get-background(0);
+      >*:not(.first):not(.last) {
+        @include get-background(0);
+        @include get-font-color(7);
+        @include get-borders("xs",2,"tx");
+        &.actif {
+          @include get-background(1);
+          @include get-font-color(7);
+        }
+        &:hover {
+          @include get-background(2);
+          @include get-font-color(7);
+        }
+      }
+    }
+    &.rank-2 {
+      @include get-background(1);
+      >*:not(.first):not(.last) {
+        @include get-background(1);
+        @include get-font-color(7);
+        @include get-borders("xs",3,"tx");
+        &.actif {
+          @include get-background(2);
+          @include get-font-color(7);
+        }
+        &:hover {
+          @include get-background(3);
+          @include get-font-color(7);
+        }
+      }
+    }
+  }
+}

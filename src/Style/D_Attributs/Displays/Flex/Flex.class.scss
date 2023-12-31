@@ -1,0 +1,29 @@
+
+
+@mixin class-flex(
+  $d-class-name : $display-class-name,
+  $f-class-name : $flex-class-name,
+  $class-name-suffix : ""
+  ) {
+
+  /*! Display - Flex - [X_Align] - [Y_Align] - [Direction] - [Wrap] */
+  @each $flex-x-key,
+  $flex-x-value in $flex-justify-content-ref {
+
+    @each $flex-y-key,
+    $flex-y-value in $flex-align-items-ref {
+
+      @each $flex-dir-key,
+      $flex-dir-value in $flex-directions-ref {
+
+        @each $flex-wrap-key,
+        $flex-wrap-value in $flex-wrap-ref {
+
+          .#{$d-class-name}-#{$f-class-name}#{name-class($flex-x-key)}#{name-class($flex-y-key)}#{name-class($flex-dir-key)}#{name-class($flex-wrap-key)}#{name-class($class-name-suffix)} {
+            @include get-flex($flex-x-key, $flex-y-key, $flex-dir-key, $flex-wrap-key)
+          }
+        }
+      }
+    }
+  }
+}

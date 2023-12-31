@@ -1,0 +1,7 @@
+* {
+  @include get-margin("no");
+  @include get-padding("no");
+  @include get-font-color(7);
+  @include get-font-size("xs");
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

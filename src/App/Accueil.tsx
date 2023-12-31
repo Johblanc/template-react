@@ -1,8 +1,8 @@
 export function AccueilPage () {
   
   return (
-    <div>
+    <section>
       Page d'Accueil
-    </div>
+    </section>
   )
 }

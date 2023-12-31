@@ -1,0 +1,18 @@
+
+
+@mixin class-colors-theme-to-fluid (
+  $color-pantone : $color-pantone-default, 
+  $inter-color-number: $inter-color-number-default, 
+  $class-name : $theme-to-fluid-class-name, 
+  $class-name-suffix : ""
+){
+  @each $format, $_ in $color-pantone {
+    $name : $format;
+    @if $format == "" {
+      $name : "default"
+    }
+    .#{$class-name}-#{$name}#{name-class($class-name-suffix)} {
+      @include get-colors-theme-to-fluid($format, $inter-color-number );
+    }
+  }
+}

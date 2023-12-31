@@ -1,0 +1,23 @@
+
+
+@mixin class-flex-shrink (
+  $default : $flex-shrink-default,
+  $min : $flex-shrink-min,
+  $max : $flex-shrink-max,
+  $step : $flex-shrink-step,
+  $first : $flex-shrink-first,
+  $class-name : $flex-shrink-class-name, 
+  $class-name-suffix : ""
+) {
+  $sequence : number-sequence($min, $max, $step, $first);
+  /*! Flex Shrink */
+  .#{$class-name} {
+    flex-shrink: $default;
+    @each $i, $value in $sequence {
+      &-#{$i}#{name-class($class-name-suffix)} {
+        flex-shrink: $value;
+      }
+    }
+  }
+}
+

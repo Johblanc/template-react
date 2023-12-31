@@ -9,13 +9,15 @@ export function Root() {
   const { token } = useContext(TokenContext);
 
   return (
-    <div>
-      <h1>Dev-Tools</h1>
+    <>
+      <header>
+        <h1>Dev-Tools</h1>
+      </header>
       {token === "" && (
-        <>
+        <div className="connection-sections">
           <Login />
           <Register />
-        </>
+        </div>
       )}
       {token !== "" && (
         <>
@@ -23,6 +25,6 @@ export function Root() {
           <Outlet />
         </>
       )}
-    </div>
+    </>
   );
 }

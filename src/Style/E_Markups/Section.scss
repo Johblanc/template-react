@@ -1,0 +1,21 @@
+
+section {
+  @include get-margin("md");
+  @include get-background(1);
+  @include get-borders("xs", 0, "br");
+  @include get-borders("xs", 2, "tl");
+  @include get-radius("md");
+
+  >*:first-child {
+    @include get-font-color(6);
+
+    * {
+      @include get-font-color(6);
+    }
+
+    @include get-radius("sm", "t");
+    @include get-padding("sm");
+    @include get-background(0);
+    @include get-borders("xs", 3, "tl");
+  }
+}

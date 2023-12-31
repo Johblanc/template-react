@@ -1,0 +1,23 @@
+
+@mixin class-width (
+  $class-name : $width-class-name,
+  $default-box-key : $width-default-box-key,
+  $all-formats : $width-all-formats,
+  $default-format : $width-default-format,
+  $size-rates: $size-box-rates-default, 
+  $size-formats : $size-formats-default,
+  $class-name-suffix : ""
+) {
+  /*! Width */
+  @include class-box-size-props(
+    width,
+    $class-name,
+    $default-box-key,
+    $all-formats,
+    $default-format,
+    $size-rates,
+    $size-formats,
+    $class-name-suffix
+  )
+}
+

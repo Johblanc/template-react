@@ -1,0 +1,12 @@
+
+
+@mixin get-font-color(
+  $color-key : $font-color-default-key
+){
+  @if $color-key == "" {
+    $color-key : $font-color-default-key;
+  }
+  @else {
+    color : var-color-fluid($color-key)
+  }
+}

@@ -31,6 +31,7 @@ export function Checkable({
       </label>
       <input
         type="checkbox"
+        className="no-size"
         checked={value}
         onClick={() => !disabled && !hidden && setValue(!value)}
         disabled={disabled}
@@ -41,7 +42,7 @@ export function Checkable({
         value={value}
         setValue={() => !disabled && !hidden && setValue(!value)}
         info={labelContent}
-        className={`${disabled ? "disabled" : ""} ${hidden ? "hidden" : ""}`}
+        className={`${disabled ? "disabled" : ""} ${hidden ? "no-size" : ""}`}
       />
     </div>
   );

@@ -1,0 +1,20 @@
+
+// BORDER --------------------------------------------------------------------------
+
+// Nom de classe (class only)
+$border-class-name : "b";
+
+// Taille par défaut
+$border-default-size-key : "xs" ; 
+
+// Format de taille pour les classes (class only)
+$border-default-size-format : "dynamic";
+
+// Couleur par défaut
+$border-default-color-key : "3" ; 
+
+// Positionnement par défaut
+$border-default-position : "" ;
+
+// Création de classes pour tous les formats (class only)
+$border-class-all-formats : false;

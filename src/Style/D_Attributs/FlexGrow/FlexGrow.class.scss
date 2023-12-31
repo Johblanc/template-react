@@ -1,0 +1,22 @@
+
+
+@mixin class-flex-grow (
+  $default : $flex-grow-default,
+  $min : $flex-grow-min,
+  $max : $flex-grow-max,
+  $step : $flex-grow-step,
+  $first : $flex-grow-first,
+  $class-name : $flex-grow-class-name, 
+  $class-name-suffix : ""
+) {
+  $sequence : number-sequence($min, $max, $step, $first);
+  /*! Flex Grow */
+  .#{$class-name} {
+    flex-grow: $default;
+    @each $i, $value in $sequence {
+      &-#{$i}#{name-class($class-name-suffix)} {
+        flex-grow: $value;
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+@use "sass:map";
+
+@mixin get-max-height (
+  $box-key : $max-height-default-box-key,
+  $all-formats : $max-height-all-formats,
+  $default-format : $max-height-default-format,
+  $size-rates: $size-box-rates-default, 
+  $size-formats : $size-formats-default
+  ) {
+  @include get-box-size-props(
+    max-height,
+    $box-key,
+    $all-formats,
+    $default-format,
+    $size-rates,
+    $size-formats,
+  );
+}

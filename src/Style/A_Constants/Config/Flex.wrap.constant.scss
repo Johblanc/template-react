@@ -1,0 +1,10 @@
+
+// FLEX WRAP -----------------------------------------------------------------------
+
+// Liste des Noms de classes pour les display flex flex-wrap
+$flex-wrap-ref : (
+  "" : none,
+  "wrap" : wrap,
+  "nowrap" : nowrap,
+  "wrap-rev" : wrap-reverse
+);

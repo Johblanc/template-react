@@ -1,0 +1,8 @@
+
+@mixin class-opacity ($opacities : $opacities-default, $class-name : $opacity-class-name, $class-name-suffix : ""){
+  @each $opacity-key, $_  in $opacities {
+    .#{$class-name}-#{$opacity-key}#{name-class($class-name-suffix)} {
+      @include get-opacity($opacity-key);
+    }
+  }
+}

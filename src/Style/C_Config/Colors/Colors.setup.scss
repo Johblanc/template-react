@@ -1,0 +1,35 @@
+
+// COULEURS ------------------------------------------------------------------------
+
+// Mode dark
+$dark-theme-default : false;
+
+// Liste des Themes
+$color-pantone-default : (
+  "" : (
+    "light"  : #ffffff,
+    "medium" : #3c767e,
+    "dark"   : #000000
+  ),
+  "good" : (
+    "light"  : #a5dbb7,
+    "medium" : #1db64d,
+    "dark"   : #093613
+  ),
+  "care" : (
+    "light"  : #d2c6a3,
+    "medium" : #bb911e,
+    "dark"   : #382a0c
+  ),
+  "bad"  : (
+    "light"  : #cb9e9e,
+    "medium" : #c02b2b,
+    "dark"   : #460e0e
+  )
+);
+
+// Nombre de couleurs intercalaire
+// light | 1 | 2 | 3 | medium | 1 | 2 | 3 | dark 
+$inter-color-number-default : 3;
+
+

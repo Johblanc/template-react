@@ -1,0 +1,18 @@
+@use "sass:map";
+
+@mixin get-min-width (
+  $box-key : $min-width-default-box-key,
+  $all-formats : $min-width-all-formats,
+  $default-format : $min-width-default-format,
+  $size-rates: $size-box-rates-default, 
+  $size-formats : $size-formats-default
+  ) {
+  @include get-box-size-props(
+    min-width,
+    $box-key,
+    $all-formats,
+    $default-format,
+    $size-rates,
+    $size-formats,
+  );
+}

@@ -1,0 +1,202 @@
+@use "sass:map";
+
+// ___________
+// CONSTANTES \__________________________________________________________________________
+
+// DISPLAY -------------------------------------------------------------------------
+
+// Liste des Noms de classes pour les valeurs de display
+$displays-ref : (
+  "block" : block,
+  "inline" : inline,
+  "no" : none, 
+);
+
+// FLEX DIRECTIONS -----------------------------------------------------------------
+
+// Liste des Noms de classes pour les display flex flex-directions
+$flex-directions-ref : (
+  "" : none,
+  "col" : column,
+  "col-rev" : column-reverse,
+  "row" : row,
+  "row-rev" : row-reverse
+);
+
+// FLEX WRAP -----------------------------------------------------------------------
+
+// Liste des Noms de classes pour les display flex flex-wrap
+$flex-wrap-ref : (
+  "" : none,
+  "wrap" : wrap,
+  "nowrap" : nowrap,
+  "wrap-rev" : wrap-reverse
+);
+
+// FLEX JUSTIFY --------------------------------------------------------------------
+
+// Liste des Noms de classes pour les display flex justify-content
+$flex-justify-content-ref : (
+  "": none,
+  "xctr" : center,
+  "xend" : flex-end,
+  "xlft" : left,
+  "xrgt" : right,
+  "xsar" : space-around,
+  "xsbt" : space-between,
+  "xsev" : space-evenly,
+  "xsta" : flex-start,
+  "xstr" : stretch,
+);
+
+// FLEX ALIGN ----------------------------------------------------------------------
+
+// Liste des Noms de classes pour les display flex align-items
+$flex-align-items-ref : (
+  "": none,
+  "ybln" : baseline,
+  "yctr" : center,
+  "yend" : flex-end,
+  "yfbl" : first baseline,
+  "ylbl" : last baseline,
+  "ynrm" : normal,
+  "ysed" : self-end,
+  "ysst" : self-start,
+  "ysta" : flex-start,
+  "ystr" : stretch,
+
+);
+
+// SIZES ---------------------------------------------------------------------------
+
+// Liste des Noms de classes pour les propriétés de tailles
+$size-generics-ref : (
+  "no" : 0px,
+  "fit" : fit-content,
+  "max" : max-content,
+  "min" : min-content,
+  "100" : 100%,
+  "90" : 90%,
+  "80" : 80%,
+  "70" : 70%,
+  "60" : 60%,
+  "50" : 50%,
+  "40" : 40%,
+  "30" : 30%,
+  "20" : 20%,
+  "10" : 10%,
+  "100h" : 100vh,
+  "90h" : 90vh,
+  "80h" : 80vh,
+  "70h" : 70vh,
+  "60h" : 60vh,
+  "50h" : 50vh,
+  "40h" : 40vh,
+  "30h" : 30vh,
+  "20h" : 20vh,
+  "10h" : 10vh,
+  "100w" : 100vw,
+  "90w" : 90vw,
+  "80w" : 80vw,
+  "70w" : 70vw,
+  "60w" : 60vw,
+  "50w" : 50vw,
+  "40w" : 40vw,
+  "30w" : 30vw,
+  "20w" : 20vw,
+  "10w" : 10vw,
+  "auto" : auto,
+);
+
+// TEXT ALIGN ----------------------------------------------------------------------
+
+// Liste des Noms de classes pour les alignement de texte
+$text-alignements-ref : (
+  "l": left,
+  "r": right,
+  "c": center,
+  "j": justify,
+  "ja": justify-all,
+);
+
+
+// POSITIONS -----------------------------------------------------------------------
+
+// Références de position dans un rectangle
+// 
+//                 TOP (Y)
+//       TL  __________________  TR
+//          |  	               |
+//          |  	               |
+// LEFT (X) |  	               |  RIGHT (X)
+//          |  	               |
+//          |__________________|
+//       BL                      BR
+//               BOTTOM (Y)
+// 
+
+// Liste des Noms de classes pour les positions diagonales et combinaison
+$positions-diag-ref : (
+  "" : append(append(append(append([] , "top-right") , "top-left") , "bottom-right") , "bottom-left"),
+  "tr" : append([] , "top-right"),
+  "tl" : append([] , "top-left" ),
+  "br" : append([] , "bottom-right"),
+  "bl" : append([] , "bottom-left" ),
+  "t" : append(append([] , "top-right") , "top-left"),
+  "r" : append(append([] , "top-right") , "bottom-right"),
+  "l" : append(append([] , "top-left") , "bottom-left"),
+  "b" : append(append([] , "bottom-right") , "bottom-left"),
+);
+
+
+// Liste des Noms de classes pour les positions ortogonales pour l'axe des y
+$positions-orto-y : (
+  "" : [],
+  "t" : append([] , "top"),
+  "b" : append([] , "bottom"),
+  "y" : append(append([] , "top") , "bottom")
+);
+
+
+// Liste des Noms de classes pour les positions ortogonales pour l'axe des x
+$positions-orto-x : (
+  "" : [],
+  "r" : append([] , "right"),
+  "l" : append([] , "left"),
+  "x" : append(append([] , "right") , "left"),
+);
+
+// Liste des Noms de classes pour les positions ortogonales les deux axes 
+@function mix-orto-xy() {
+  $result : [];
+
+  @each $x-key,
+  $x-value in $positions-orto-x {
+
+    @each $y-key,
+    $y-value in $positions-orto-y {
+
+      $value : [];
+      @each $x-pos in $x-value {
+        $value : append($value , $x-pos )
+      }
+      @each $y-pos in $y-value {
+        $value : append($value , $y-pos )
+      }
+      
+      @if $x-key == "" and $y-key =="" {
+        $value : append(append(append(append([] , "right") , "left") , "top") , "bottom")
+      }
+      $result : map.merge($result, (#{$y-key}#{$x-key} : $value));
+    }
+    
+  }
+
+  @return $result;
+};
+
+
+
+
+
+

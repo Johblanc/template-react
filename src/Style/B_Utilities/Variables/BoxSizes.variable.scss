@@ -1,0 +1,11 @@
+
+// Construction d'une variable css de taille de colonne
+@function var-box-size($format , $rate, $negative : false) {
+  @if $negative {
+    @return calc(100% - var(#{"--var-size-"}#{$format}#{"-box-"}#{$rate}));
+  }
+  @else {
+    @return var(#{"--var-size-"}#{$format}#{"-box-"}#{$rate});
+  }
+};
+

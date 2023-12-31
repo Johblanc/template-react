@@ -1,0 +1,10 @@
+
+// Permet de générer les class de répartition diagonale d'une propriété
+@mixin class-position-diag ($property-prefix, $property-suffix, $value, $class-name-suffix : "") {
+
+  @each $position, $_ in $positions-diag-ref {
+    &#{name-class($position)}#{name-class($class-name-suffix)} {
+      @include split-position-diag($property-prefix, $property-suffix, $value, $position)
+    }
+  }
+}

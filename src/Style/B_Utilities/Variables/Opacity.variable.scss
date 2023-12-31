@@ -1,0 +1,7 @@
+
+
+// Construction d'une variable css d'opacité 
+@function var-opacity($opacity-key) {
+  @return var(#{"--var-opacity"}#{name-class($opacity-key)})
+};
+

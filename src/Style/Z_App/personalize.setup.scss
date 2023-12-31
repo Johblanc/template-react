@@ -1,0 +1,582 @@
+// ________
+// GENERAL \_____________________________________________________________________________
+
+// Nom de Class à la racine de l'application
+$root-class-name : "app";
+@use "sass:map";
+
+// ___________
+// CONSTANTES \__________________________________________________________________________
+
+// DISPLAY -------------------------------------------------------------------------
+
+// Liste des Noms de classes pour les valeurs de display
+$displays-ref : (
+  "block" : block,
+  "inline" : inline,
+  "no" : none, 
+);
+
+// FLEX DIRECTIONS -----------------------------------------------------------------
+
+// Liste des Noms de classes pour les display flex flex-directions
+$flex-directions-ref : (
+  "" : none,
+  "col" : column,
+  "col-rev" : column-reverse,
+  "row" : row,
+  "row-rev" : row-reverse
+);
+
+// FLEX WRAP -----------------------------------------------------------------------
+
+// Liste des Noms de classes pour les display flex flex-wrap
+$flex-wrap-ref : (
+  "" : none,
+  "wrap" : wrap,
+  "nowrap" : nowrap,
+  "wrap-rev" : wrap-reverse
+);
+
+// FLEX JUSTIFY --------------------------------------------------------------------
+
+// Liste des Noms de classes pour les display flex justify-content
+$flex-justify-content-ref : (
+  "": none,
+  "xctr" : center,
+  "xend" : flex-end,
+  "xlft" : left,
+  "xrgt" : right,
+  "xsar" : space-around,
+  "xsbt" : space-between,
+  "xsev" : space-evenly,
+  "xsta" : flex-start,
+  "xstr" : stretch,
+);
+
+// FLEX ALIGN ----------------------------------------------------------------------
+
+// Liste des Noms de classes pour les display flex align-items
+$flex-align-items-ref : (
+  "": none,
+  "ybln" : baseline,
+  "yctr" : center,
+  "yend" : flex-end,
+  "yfbl" : first baseline,
+  "ylbl" : last baseline,
+  "ynrm" : normal,
+  "ysed" : self-end,
+  "ysst" : self-start,
+  "ysta" : flex-start,
+  "ystr" : stretch,
+
+);
+
+// SIZES ---------------------------------------------------------------------------
+
+// Liste des Noms de classes pour les propriétés de tailles
+$size-generics-ref : (
+  "no" : 0px,
+  "fit" : fit-content,
+  "max" : max-content,
+  "min" : min-content,
+  "100" : 100%,
+  "90" : 90%,
+  "80" : 80%,
+  "70" : 70%,
+  "60" : 60%,
+  "50" : 50%,
+  "40" : 40%,
+  "30" : 30%,
+  "20" : 20%,
+  "10" : 10%,
+  "100h" : 100vh,
+  "90h" : 90vh,
+  "80h" : 80vh,
+  "70h" : 70vh,
+  "60h" : 60vh,
+  "50h" : 50vh,
+  "40h" : 40vh,
+  "30h" : 30vh,
+  "20h" : 20vh,
+  "10h" : 10vh,
+  "100w" : 100vw,
+  "90w" : 90vw,
+  "80w" : 80vw,
+  "70w" : 70vw,
+  "60w" : 60vw,
+  "50w" : 50vw,
+  "40w" : 40vw,
+  "30w" : 30vw,
+  "20w" : 20vw,
+  "10w" : 10vw,
+  "auto" : auto,
+);
+
+// TEXT ALIGN ----------------------------------------------------------------------
+
+// Liste des Noms de classes pour les alignement de texte
+$text-alignements-ref : (
+  "l": left,
+  "r": right,
+  "c": center,
+  "j": justify,
+  "ja": justify-all,
+);
+
+
+// POSITIONS -----------------------------------------------------------------------
+
+// Références de position dans un rectangle
+// 
+//                 TOP (Y)
+//       TL  __________________  TR
+//          |  	               |
+//          |  	               |
+// LEFT (X) |  	               |  RIGHT (X)
+//          |  	               |
+//          |__________________|
+//       BL                      BR
+//               BOTTOM (Y)
+// 
+
+// Liste des Noms de classes pour les positions diagonales et combinaison
+$positions-diag-ref : (
+  "" : append(append(append(append([] , "top-right") , "top-left") , "bottom-right") , "bottom-left"),
+  "tr" : append([] , "top-right"),
+  "tl" : append([] , "top-left" ),
+  "br" : append([] , "bottom-right"),
+  "bl" : append([] , "bottom-left" ),
+  "t" : append(append([] , "top-right") , "top-left"),
+  "r" : append(append([] , "top-right") , "bottom-right"),
+  "l" : append(append([] , "top-left") , "bottom-left"),
+  "b" : append(append([] , "bottom-right") , "bottom-left"),
+);
+
+
+// Liste des Noms de classes pour les positions ortogonales pour l'axe des y
+$positions-orto-y : (
+  "" : [],
+  "t" : append([] , "top"),
+  "b" : append([] , "bottom"),
+  "y" : append(append([] , "top") , "bottom")
+);
+
+
+// Liste des Noms de classes pour les positions ortogonales pour l'axe des x
+$positions-orto-x : (
+  "" : [],
+  "r" : append([] , "right"),
+  "l" : append([] , "left"),
+  "x" : append(append([] , "right") , "left"),
+);
+
+// Liste des Noms de classes pour les positions ortogonales les deux axes 
+@function mix-orto-xy() {
+  $result : [];
+
+  @each $x-key,
+  $x-value in $positions-orto-x {
+
+    @each $y-key,
+    $y-value in $positions-orto-y {
+
+      $value : [];
+      @each $x-pos in $x-value {
+        $value : append($value , $x-pos )
+      }
+      @each $y-pos in $y-value {
+        $value : append($value , $y-pos )
+      }
+      
+      @if $x-key == "" and $y-key =="" {
+        $value : append(append(append(append([] , "right") , "left") , "top") , "bottom")
+      }
+      $result : map.merge($result, (#{$y-key}#{$x-key} : $value));
+    }
+    
+  }
+
+  @return $result;
+};
+
+
+// ______________
+// CONFIGURATION \_______________________________________________________________________
+
+// BREAKPOINTS ---------------------------------------------------------------------
+
+// Liste des BreakPoints
+$breakpoints-ref : (
+  "xs" : 576px ,
+  "sm" : 768px ,
+  "md" : 992px ,
+  "lg" : 1984px,
+  "xl" : 3968px
+);
+
+// Ajout des classes responcives
+$breakpoints-class : true;
+
+// Nom de classe pour les Max-Width
+$breakpoints-down-class-name : "break-down";
+
+// Nom de classe pour les Min-Width
+$breakpoints-up-class-name : "break-up";
+
+
+// TAILLES -------------------------------------------------------------------------
+
+// Références d'unité de Tailles
+$size-formats-default : ("dynamic" : max(min(1vw, 1vh), 4px),
+  "static" : 12pt);
+
+// Taux pour les Tailles de dimentionnement
+$size-rates-default : ("xs" : 0.25,
+  "sm" : 0.5,
+  "md" : 1,
+  "lg" : 1.5,
+  "xl" : 2);
+
+// Taux pour les Tailles de font-size
+$size-font-rates-default : ("xs" : 1,
+  "sm" : 1.2,
+  "md" : 1.4,
+  "lg" : 1.6,
+  "xl" : 1.8);
+
+
+// COULEURS ------------------------------------------------------------------------
+
+// Mode dark
+$dark-theme-default : false;
+
+// Liste des Themes
+$color-pantone-default : ("" : ("light" : #ffffff,
+    "medium" : #3c767e,
+    "dark" : #000000),
+  "good" : ("light" : #ffffff,
+    "medium" : #1db64d,
+    "dark" : #000000),
+  "care" : ("light" : #ffffff,
+    "medium" : #bb911e,
+    "dark" : #000000),
+  "bad" : ("light" : #ffffff,
+    "medium" : #c02b2b,
+    "dark" : #000000));
+
+// Nombre de couleurs intercalaire
+// light | 1 | 2 | 3 | medium | 1 | 2 | 3 | dark 
+$inter-color-number-default : 3;
+
+
+// COULEURS FLUIDES ----------------------------------------------------------------
+
+// Nom du Theme par défaut
+$default-theme-to-fluid : "";
+
+// Préfixe du nom de class pour les Themes
+$theme-to-fluid-class-name : "theme";
+
+
+// OPACITE -------------------------------------------------------------------------
+
+// Liste des Opacités
+$opacities-default : ("invisible" : 0,
+  "disable" : 0.3,
+  "active" : 0.8,
+  "hover" : 1,
+);
+
+
+// ______________
+// ATTRIBUTS CSS \_______________________________________________________________________
+
+// DISPLAY -------------------------------------------------------------------------
+
+// Nom de classe (class only)
+$display-class-name : "d";
+
+
+// DISPLAY FLEX --------------------------------------------------------------------
+
+// Nom de classe (class only)
+$flex-class-name : "flex";
+
+// Alignement en x par défaut
+$flex-default-x-key : "";
+
+// Alignement en y par défaut
+$flex-default-y-key : "";
+
+// Direction par défaut
+$flex-default-direction : "";
+
+// Wrap par défaut
+$flex-default-wrap: nowrap;
+
+
+// DISPLAY FLEX SHRINK -------------------------------------------------------------
+
+// Nom de classe (class only)
+$flex-shrink-class-name : "flex-shrink";
+
+// Nom de classe première valeur (class only)
+$flex-shrink-first : 1;
+
+// Valeur Minimale (class only)
+$flex-shrink-min : 1;
+
+// Valeur Maximale (class only)
+$flex-shrink-max : 3;
+
+// Valeur entre deux Valeur (class only)
+$flex-shrink-step : 1;
+
+// Valeur par défaut
+$flex-shrink-default : 1;
+
+
+// DISPLAY FLEX GROW ---------------------------------------------------------------
+
+// Nom de classe (class only)
+$flex-grow-class-name : "flex-grow";
+
+// Nom de classe première valeur (class only)
+$flex-grow-first : 1;
+
+// Valeur Minimale (class only)
+$flex-grow-min : 1;
+
+// Valeur Maximale (class only)
+$flex-grow-max : 3;
+
+// Valeur entre deux Valeur (class only)
+$flex-grow-step : 1;
+
+// Valeur par défaut
+$flex-grow-default : 1;
+
+
+// DISPLAY FLEX BASIS --------------------------------------------------------------
+
+// Nom de classe (class only)
+$flex-basis-class-name : "flex-basis";
+
+// Taille par défaut
+$flex-basis-default-box-key : "md";
+
+// Création de clé pour tous les formats
+$flex-basis-all-formats : false;
+
+// Format de taille par défaut
+$flex-basis-default-format : "static";
+
+
+// HEIGHT --------------------------------------------------------------------------
+
+// Nom de classe (class only)
+$height-class-name : "h";
+
+// Taille par défaut
+$height-default-box-key : "100";
+
+// Création de clé pour tous les formats
+$height-all-formats : false;
+
+// Format de taille par défaut
+$height-default-format : "static";
+
+
+// WIDTH ---------------------------------------------------------------------------
+
+// Nom de classe (class only)
+$width-class-name : "w";
+
+// Taille par défaut
+$width-default-box-key : "100";
+
+// Création de clé pour tous les formats
+$width-all-formats : false;
+
+// Format de taille par défaut
+$width-default-format : "static";
+
+
+// HEIGHT MIN ----------------------------------------------------------------------
+
+// Nom de classe (class only)
+$min-height-class-name : "min-h";
+
+// Taille par défaut
+$min-height-default-box-key : "100";
+
+// Création de clé pour tous les formats
+$min-height-all-formats : false;
+
+// Format de taille par défaut
+$min-height-default-format : "static";
+
+
+// WIDTH MIN -----------------------------------------------------------------------
+
+// Nom de classe (class only)
+$min-width-class-name : "min-w";
+
+// Taille par défaut
+$min-width-default-box-key : "100";
+
+// Création de clé pour tous les formats
+$min-width-all-formats : false;
+
+// Format de taille par défaut
+$min-width-default-format : "static";
+
+
+// HEIGHT MAX ----------------------------------------------------------------------
+
+// Nom de classe (class only)
+$max-height-class-name : "max-h";
+
+// Taille par défaut
+$max-height-default-box-key : "100";
+
+// Création de clé pour tous les formats
+$max-height-all-formats : false;
+
+// Format de taille par défaut
+$max-height-default-format : "static";
+
+
+// WIDTH MAX -----------------------------------------------------------------------
+
+// Nom de classe (class only)
+$max-width-class-name : "max-w";
+
+// Taille par défaut
+$max-width-default-box-key : "100";
+
+// Création de clé pour tous les formats
+$max-width-all-formats : false;
+
+// Format de taille par défaut
+$max-width-default-format : "static";
+
+
+// FONT SIZES ----------------------------------------------------------------------
+
+// Nom de classe (class only)
+$font-size-class-name : "fs";
+
+// Taille par défaut
+$font-size-default-size-key : "xs";
+
+// Format de taille pour les classes (class only)
+$font-size-default-size-format : "static";
+
+// Création de classes pour tous les formats (class only)
+$font-size-class-all-formats : false;
+
+
+// FONT COLORS ---------------------------------------------------------------------
+
+// Nom de classe (class only)
+$font-color-class-name : "fc";
+
+// Couleur par défaut
+$font-color-default-key : "4";
+
+
+// BACKGROUND ----------------------------------------------------------------------
+
+// Nom de classe (class only)
+$background-class-name : "bg";
+
+// Couleur par défaut
+$background-default-key : "4";
+
+
+// OPACITE -------------------------------------------------------------------------
+
+// Nom de classe (class only)
+$opacity-class-name : "opa";
+
+// Valeur par défaut
+$opacity-key-default : "active";
+
+
+// MARGIN --------------------------------------------------------------------------
+
+// Nom de classe (class only)
+$margin-class-name : "m";
+
+// Taille par défaut
+$margin-default-size-key : "md";
+
+// Positionnement par défaut
+$margin-default-position : "";
+
+// Format de taille pour les classes (class only)
+$margin-default-size-format : "dynamic";
+
+// Création de classes pour tous les formats (class only)
+$margin-class-all-formats : false;
+
+
+// PADDING -------------------------------------------------------------------------
+
+// Nom de classe (class only)
+$padding-class-name : "p";
+
+// Taille par défaut
+$padding-default-size-key : "md";
+
+// Positionnement par défaut
+$padding-default-position : "";
+
+// Format de taille pour les classes (class only)
+$padding-default-size-format : "dynamic";
+
+// Création de classes pour tous les formats (class only)
+$padding-class-all-formats : false;
+
+
+// BORDER RADIUS -------------------------------------------------------------------
+
+// Nom de classe (class only)
+$radius-class-name : "r";
+
+// Taille par défaut
+$radius-default-size-key : "md";
+
+// Positionnement par défaut
+$radius-default-position : "";
+
+// Format de taille pour les classes (class only)
+$radius-default-size-format : "dynamic";
+
+// Création de classes pour tous les formats (class only)
+$radius-class-all-formats : false;
+
+
+// BORDER --------------------------------------------------------------------------
+
+// Nom de classe (class only)
+$border-class-name : "b";
+
+// Taille par défaut
+$border-default-size-key : "xs";
+
+// Format de taille pour les classes (class only)
+$border-default-size-format : "dynamic";
+
+// Couleur par défaut
+$border-default-color-key : "3";
+
+// Positionnement par défaut
+$border-default-position : "";
+
+// Création de classes pour tous les formats (class only)
+$border-class-all-formats : false;
+
+

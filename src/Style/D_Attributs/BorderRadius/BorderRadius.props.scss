@@ -1,0 +1,16 @@
+
+
+@mixin get-radius($size-key : "" , $position : $radius-default-position , $size-format : ""){
+  @if $size-key == "" {
+    $size-key : $radius-default-size-key;
+  }
+  @if $size-format == "" {
+    $size-format : $radius-default-size-format;
+  }
+  @if $size-key == "no" {
+    @include split-position-diag(border, radius, 0, $position)
+  }
+  @else {
+    @include split-position-diag(border, radius, var-size($size-format, $size-key), $position)
+  }
+}

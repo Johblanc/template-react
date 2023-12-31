@@ -1,0 +1,18 @@
+@use "sass:map";
+
+@mixin get-max-width (
+  $box-key : $max-width-default-box-key,
+  $all-formats : $max-width-all-formats,
+  $default-format : $max-width-default-format,
+  $size-rates: $size-box-rates-default, 
+  $size-formats : $size-formats-default
+  ) {
+  @include get-box-size-props(
+    max-width,
+    $box-key,
+    $all-formats,
+    $default-format,
+    $size-rates,
+    $size-formats,
+  );
+}

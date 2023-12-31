@@ -1,0 +1,11 @@
+
+
+// Permet de générer les class de répartition ortogonale d'une propriété
+@mixin class-position-orto ($property, $value, $class-name-suffix : "") {
+  $positions-orto-ref : mix-orto-xy();
+  @each $position, $_ in $positions-orto-ref {
+    &#{name-class($position)}#{name-class($class-name-suffix)} {
+      @include split-position-orto($property, $value, $position)
+    }
+  }
+}

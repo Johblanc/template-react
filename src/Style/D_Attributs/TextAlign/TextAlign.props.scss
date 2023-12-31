@@ -1,0 +1,5 @@
+@use "sass:map";
+
+@mixin get-text-align ($text-align-key : $text-align-key-default){
+  text-align: map.get($text-alignements-ref, $text-align-key);
+}

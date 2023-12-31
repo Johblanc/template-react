@@ -1,0 +1,35 @@
+
+
+@mixin class-padding(
+  $size-formats : $size-formats-default, 
+  $size-rates: $size-rates-default, 
+  $default-size-key : $padding-default-size-key, 
+  $default-size-format : $padding-default-size-format,
+  $all-formats : $padding-class-all-formats,
+  $class-name : $padding-class-name,
+  $class-name-suffix : ""
+) {
+  /*! Padding */
+  .#{$class-name}{
+    @include class-position-orto(padding, var-size($default-size-format, $default-size-key), $class-name-suffix);
+    &-auto {
+      @include class-position-orto(padding, auto, $class-name-suffix );
+    }
+    &-no {
+      @include class-position-orto(padding, 0 , $class-name-suffix);
+    }
+    @each $rate-key, $rate-value in $size-rates {
+      &#{name-class($rate-key)} {
+        @include class-position-orto(padding, var-size($default-size-format, $rate-key), $class-name-suffix);
+        
+        @if $all-formats {
+          @each $format-key, $format-value in $size-formats {
+            &#{name-class($format-key)} {
+              @include class-position-orto(padding, var-size($format-key, $rate-key), $class-name-suffix);
+            }
+          }
+        }
+      }
+    }
+  }
+}

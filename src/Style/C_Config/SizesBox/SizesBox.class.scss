@@ -1,0 +1,33 @@
+
+@use "sass:map";
+
+@mixin class-box-size-props(
+  $property,
+  $class-name,
+  $default-box-key : $box-size-default-box-key,
+  $all-formats : $box-size-all-formats,
+  $default-format : $box-size-default-format,
+  $size-rates: $size-box-rates-default, 
+  $size-formats : $size-formats-default, 
+  $class-name-suffix : ""
+) {
+  .#{$class-name}{
+    $listing : box-sizes-map(
+      $all-formats,
+      $default-format,
+      $size-rates,
+      $size-formats
+      ) ;
+
+    @each $key, $value in $listing {
+      @if($key == $default-box-key ){
+        #{$property}: $value;
+      }
+    }
+    @each $key, $value in $listing {
+      &#{name-class($key)}#{name-class($class-name-suffix)} {
+        #{$property}: $value;
+      }
+    }
+  }
+}
