@@ -56,7 +56,7 @@ export function ProfilePage() {
           <h3>Vos Contacts</h3>
           <div>
             {user.contacts.friends.map((item, i) => (
-              <ContactCard key={i} user={item} />
+              <ContactCard key={i} userItem={item} />
             ))}
           </div>
         </div>

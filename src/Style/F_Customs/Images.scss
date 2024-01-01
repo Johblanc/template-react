@@ -1,16 +1,38 @@
 
 .avatar-small {
-  width: 3em;
-  height: 3em;
-  .f-5 {
-    @include get-fill(5)
-  }
+  width: 4em;
+  height: 4em;
 }
 
 .avatar-large {
   width: 10em;
   height: 10em;
-  .f-5 {
-    @include get-fill(5)
-  }
+}
+
+.f-0 {
+  @include get-fill(0)
+}
+.f-1 {
+  @include get-fill(1)
+}
+.f-2 {
+  @include get-fill(2)
+}
+.f-3 {
+  @include get-fill(3)
+}
+.f-4 {
+  @include get-fill(4)
+}
+.f-5 {
+  @include get-fill(5)
+}
+.f-6 {
+  @include get-fill(6)
+}
+.f-7 {
+  @include get-fill(7)
+}
+.f-8 {
+  @include get-fill(8)
 }

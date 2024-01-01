@@ -6,16 +6,56 @@
   @include get-radius("sm");
   @include get-borders();
 
-  img, svg {
+  img,
+  svg {
     @include get-margin("sm", "r");
   }
-  div {
+
+  .informations {
+    @include get-flex-grow(1);
+
     >p:first-child {
 
       strong {
         font-size: 120%;
       }
-      @include get-margin("sm","b");
+
+      @include get-margin("sm", "b");
+    }
+
+    .relation {
+      @include get-font-color(5);
+
+      &.disabled {
+        @include get-font-color(3);
+      }
+    }
+  }
+
+  .actions {
+    @include get-flex("", "", "col");
+    transition: all 0.8s;
+    overflow: hidden;
+    width: 0;
+
+    >div {
+      @include get-flex();
+
+      button {
+        @include get-margin("xs");
+        height: 2em;
+        width: 2em;
+
+        svg {
+          @include get-margin("no");
+        }
+      }
+    }
+  }
+
+  &:hover {
+    .actions {
+      width: 4.6em;
     }
   }
 }

@@ -91,7 +91,7 @@ export function UserGetAll() {
       <div className="items">
         <div>
         {users.map((item, i) => (
-          <ContactCard key={i} user={item} />
+          <ContactCard key={i} userItem={item} />
         ))}
         </div>
       </div>
