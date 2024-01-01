@@ -1,0 +1,20 @@
+.section-auto-promote {
+  >div {
+    @include get-padding("xl");
+
+    &.auto-promote-entry {
+      input {
+        @include get-margin("md", "t");
+        @include get-width("100");
+      }
+    }
+
+    &.auto-promote-actions {
+      @include get-flex("xsev");
+
+      >* {
+        @include get-padding("xl","x");
+      }
+    }
+  }
+}
