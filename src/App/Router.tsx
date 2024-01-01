@@ -33,6 +33,19 @@ export const ROUTER = createBrowserRouter([
           },
         ],
       },
+      {
+        path: "admin",
+        children: [
+          {
+            path: "",
+            element: <div></div>,
+          },
+          {
+            path: "promote",
+            element: <div></div>,
+          },
+        ],
+      },
     ],
   },
 ]);

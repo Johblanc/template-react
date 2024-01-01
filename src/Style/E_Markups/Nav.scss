@@ -1,5 +1,6 @@
 nav {
-  //@include get-background(0);
+  @include get-flex("xsev", "", "", "wrap");
+  @include get-background(1);
 
   * {
     text-decoration: none;
@@ -7,54 +8,58 @@ nav {
 
   >div {
     @include get-flex("xsev", "", "", "wrap");
-    @include get-padding("xs","t");
+    @include get-padding("xs", "t");
 
-    .first {
-      @include get-flex-grow(1);
-    }
-    .last {
-      @include get-flex-grow(1);
-    }
-
-    >*:not(.first):not(.last) {
-      @include get-margin("xs","x");
-      @include get-padding("xl","x");
-      @include get-padding("sm","y");
-      @include get-radius("md","t");
+    >* {
+      @include get-margin("xs", "x");
+      @include get-padding("xl", "x");
+      @include get-padding("sm", "y");
+      @include get-radius("md", "t");
+      @include get-radius("no", "b");
       cursor: pointer;
     }
 
-    &.rank-1 {
-      @include get-background(0);
-      >*:not(.first):not(.last) {
-        @include get-background(0);
-        @include get-font-color(7);
-        @include get-borders("xs",2,"tx");
-        &.actif {
-          @include get-background(1);
-          @include get-font-color(7);
-        }
-        &:hover {
-          @include get-background(2);
-          @include get-font-color(7);
-        }
-      }
-    }
-    &.rank-2 {
-      @include get-background(1);
-      >*:not(.first):not(.last) {
+    &.rank {
+      @include get-flex-grow(1);
+
+      .nav-item {
         @include get-background(1);
         @include get-font-color(7);
-        @include get-borders("xs",3,"tx");
+        @include get-borders("xs", 3, "tx");
+        @include get-borders("no", 3, "b");
+
         &.actif {
           @include get-background(2);
           @include get-font-color(7);
         }
+
         &:hover {
           @include get-background(3);
           @include get-font-color(7);
         }
+        @include get-down-responsive("xs") {
+          @include get-width("100");
+        }
       }
+    }
+  }
+
+  .nav-wire {
+    @include get-text-align("l");
+    @include get-background(1);
+    @include get-borders("no");
+    @include get-font-color(7);
+    @include get-padding("md", "x");
+
+
+    &:hover {
+      @include get-background(2);
+      @include get-font-color(7);
+      @include get-borders("no");
+    }
+    
+    @include get-down-responsive("xs") {
+      @include get-width("100");
     }
   }
 }
