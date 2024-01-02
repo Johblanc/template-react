@@ -6,6 +6,7 @@ import { AccueilPage } from "./Accueil";
 import { UserUpdatePage } from "../Users/UserUpdate";
 import { UserGetAll } from "../Users/UserGetAll";
 import { AutoPromote } from "../Admin/AutoPromote";
+import { Promote } from "../Admin/Promote";
 
 export const ROUTER = createBrowserRouter([
   {
@@ -44,7 +45,7 @@ export const ROUTER = createBrowserRouter([
           },
           {
             path: "promote",
-            element: <div></div>,
+            element: <Promote />,
           },
         ],
       },

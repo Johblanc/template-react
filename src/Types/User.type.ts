@@ -1,6 +1,7 @@
 import { TContacts } from "./Contacts.type";
 import { TImage } from "./Image.type";
 import { TRole } from "./Role.type";
+import { TSubRole } from "./SubRole.type";
 
 export type TUser = {
   id: string;
@@ -12,4 +13,5 @@ export type TUser = {
   last_name?: string | null;
   mail?: string | null;
   contacts?: TContacts;
+  sub_roles? : TSubRole[]
 };

@@ -20,4 +20,15 @@ export class RequesterRoles extends RequesterBase {
     );
     return response;
   }
+
+  async promote(body : {user_id : string, sub_roles : string[]}, token : string): Promise<TResponse<TUser>> {
+    const response = await RequesterRoles.base<TUser>(
+      `${this.route}`,
+      RequestMethods.PATCH,
+      [],
+      body,
+      token
+    );
+    return response;
+  }
 }

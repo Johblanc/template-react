@@ -1,0 +1,70 @@
+.section-promote {
+  @include get-flex("","","col");
+
+  .search-bar {
+    @include get-flex("xsbt","","","wrap");
+    >* {
+      @include get-padding("xl");
+      >div {
+        @include get-flex();
+        label {
+          @include get-margin("md","r");
+        }
+      }
+    }
+  }
+
+  .items {
+    @include get-padding("md", "x");
+    @include get-flex-grow(1);
+    table {
+      @include get-text-align("c");
+      @include get-width("100");
+      thead{
+        tr {
+          >*{
+            @include get-padding("sm","x")
+          }
+          >*:not(:first-child){
+            min-width: 10px;
+            max-width: 100px;
+            width: 100px;
+            overflow: hidden;
+          }
+        }
+      }
+      tbody {
+        tr {
+          &:hover {
+            @include get-background(2);
+          }
+          button {
+            @include get-padding("no");
+            height: 1.6em;
+            width: 1.6em;
+            transition: all 0.5s;
+            padding: 0.05em;
+            svg {
+              height: 1.4em;
+              width: 1.4em;
+            }
+          }
+
+          svg {
+            height: 1.5em;
+            width: 1.5em;
+          }
+        }
+      }
+    }
+  }
+
+  .pages {
+    @include get-flex("xsev");
+    @include get-padding("md","y");
+    button {
+      @include get-padding("xl","x");
+      @include get-radius("xl");
+    }
+  }
+}
