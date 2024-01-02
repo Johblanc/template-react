@@ -215,7 +215,7 @@ export function Navigation() {
             {"Admin >"}
           </button>
           <div className="rank">
-            <ToLink path={"/admin"} title={"Extraction"} />
+            <ToLink path={"/admin"} title={"Gestion"} />
             <ToLink path={"/admin/promote"} title={"Promotion"} />
           </div>
         </>
