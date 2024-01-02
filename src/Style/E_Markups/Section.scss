@@ -8,14 +8,12 @@ section {
 
   >*:first-child {
     @include get-font-color(6);
-
-    * {
-      @include get-font-color(6);
-    }
-
-    @include get-radius("sm", "t");
+    @include get-radius("md", "t");
     @include get-padding("sm");
     @include get-background(0);
     @include get-borders("xs", 3, "tl");
+    * {
+      @include get-font-color(6);
+    }
   }
 }
