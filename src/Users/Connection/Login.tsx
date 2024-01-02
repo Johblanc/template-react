@@ -58,7 +58,7 @@ export function Login() {
 
   return (
     <section>
-      <h3>Connection</h3>
+      <h2>Connection</h2>
       <form>
         <StringEntry
           idName={"login-pseudo"}

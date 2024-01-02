@@ -121,7 +121,7 @@ export function Register () {
   };
   return (
     <form>
-      <h3>Enregistrement</h3>
+      <h2>Enregistrement</h2>
       <StringEntry
         idName={"register-pseudo"}
         labelContent={"Pseudo"}

@@ -115,7 +115,7 @@ export function AutoPromote() {
 
   return (
     <section className="section-auto-promote">
-      <h3>Vous n'êtes pas administrateur du site</h3>
+      <h2>Vous n'êtes pas administrateur du site</h2>
 
       <StringEntry
         idName={"admin-password"}

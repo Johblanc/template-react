@@ -115,7 +115,7 @@ export function UserUpdatePage() {
 
   return (
     <form>
-      <h3>Modification Profile</h3>
+      <h2>Modification Profile</h2>
       <StringEntry
         idName={"update-user-pseudo"}
         labelContent={"Pseudo"}

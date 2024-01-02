@@ -65,7 +65,7 @@ export function Promote() {
 
   return (
     <section className="section-promote">
-      <h3>Promotion</h3>
+      <h2>Promotion</h2>
       <div className="search-bar">
         <StringEntry
           idName={"search-pseudo"}

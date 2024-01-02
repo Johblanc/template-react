@@ -77,7 +77,7 @@ export function UserUpdatePage() {
 
   return (
     <section className="section-update-user">
-      <h3>Modification Profile</h3>
+      <h2>Modification Profile</h2>
       <form>
         <StringEntry
           idName={"update-user-pseudo"}

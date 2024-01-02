@@ -78,7 +78,7 @@ export function Register() {
   };
   return (
     <section>
-      <h3>Enregistrement</h3>
+      <h2>Enregistrement</h2>
       <form>
         <StringEntry
           idName={"register-pseudo"}
