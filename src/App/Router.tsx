@@ -7,6 +7,7 @@ import { UserUpdatePage } from "../Users/UserUpdate";
 import { UserGetAll } from "../Users/UserGetAll";
 import { AutoPromote } from "../Admin/AutoPromote";
 import { Promote } from "../Admin/Promote";
+import { GestionBdD } from "../Admin/GestionBdD";
 
 export const ROUTER = createBrowserRouter([
   {
@@ -41,7 +42,7 @@ export const ROUTER = createBrowserRouter([
         children: [
           {
             path: "",
-            element: <div></div>,
+            element: <GestionBdD/>,
           },
           {
             path: "promote",

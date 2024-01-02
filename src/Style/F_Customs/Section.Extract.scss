@@ -1,0 +1,10 @@
+.section-extract {
+  >div{
+    >*{
+      @include get-margin("xl")
+    }
+    button {
+      @include get-margin("xl")
+    }
+  }
+}
